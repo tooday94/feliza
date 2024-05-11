@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://felizabackend.de/api/auth/'
+const baseURL = 'https://felizabackend.uz/api/auth/'
 
 const isRegistretedUser = async(phone) => {
     try {

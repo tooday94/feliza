@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://felizabackend.de/api/categories'
+const baseURL = 'https://felizabackend.uz/api/categories'
 
 const getParentCategory = async() => {
     try {
@@ -18,7 +18,7 @@ const getParentCategory = async() => {
 const getSubCategoriesByParent = async(parent) => {
 
     try {
-      const res = await axios.get('https://felizabackend.de/api/categories/getSubCategoriesByParent/' + parent)
+      const res = await axios.get('https://felizabackend.uz/api/categories/getSubCategoriesByParent/' + parent)
       if(res.status == 200) {
         return {success: true, data: res.data}
       } else {

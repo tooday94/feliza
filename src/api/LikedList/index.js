@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://felizabackend.de/api/likedItem/'
+const baseURL = 'https://felizabackend.uz/api/likedItem/'
 
 const addLikedItem = async(jsonBody) => {
     try {

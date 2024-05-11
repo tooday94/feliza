@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://felizabackend.de/api/cartItem'
+const baseURL = 'https://felizabackend.uz/api/cartItem'
 
 
 const addProductToBasket = async(cartItem) => {

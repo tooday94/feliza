@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://felizabackend.de/api/'
+const baseURL = 'https://felizabackend.uz/api/'
 
 
 const getAllRegions = async() => {

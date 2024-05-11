@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiUrl = 'https://felizabackend.de/api/lookCollection/'
+const apiUrl = 'https://felizabackend.uz/api/lookCollection/'
 
 const getAllCollections = async() => {
     try {

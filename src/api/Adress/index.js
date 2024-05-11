@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://felizabackend.de/api/address/'
+const baseURL = 'https://felizabackend.uz/api/address/'
 
 
 const addAddress = async(adress) => {

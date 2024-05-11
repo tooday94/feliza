@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://felizabackend.de/api/product'
+const baseURL = 'https://felizabackend.uz/api/product'
 
 
 const getAllProduct = async() => {

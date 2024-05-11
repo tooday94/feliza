@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://felizabackend.de/api/customers/'
+const baseURL = 'https://felizabackend.uz/api/customers/'
 
 const getCustomerByID = async(id) => {
     try {
