@@ -1,0 +1,187 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ffe6e6;
+}
+
+.logo {
+    font-family: "Sofia", sans-serif !important; 
+    font-size: 24px;
+    color: black;
+    
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    object-position: top;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (min-width: 768px) {
+    
+  }
+
+@media screen and (max-width: 768px) {
+    .footer {
+      display: flex !important;
+    }
+  }
+
+  .slick-arrow{
+    display: none !important;
+    color: rgb(151, 20, 20);
+  }
+
+  .slide {
+    width: 100%;
+    /* height: 40vh !important; */
+  }
+
+  .cursorPointer {
+    cursor: pointer;
+  }
+ 
+  .MuiAccordion-root {
+    box-shadow: none !important;
+  }
+
+  .MuiAccordion-root:before {
+    background-color: inherit !important;
+    
+  }
+
+  .smallSliderBox {
+    width: 20vw !important;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    /* Styles for phones (max-width: 600px) */
+    .smallSliderBox {
+      width: 40vw !important;
+    }
+  }
+  
+  @media only screen and (min-width: 601px) and (max-width: 1024px) {
+    /* Styles for tablets (min-width: 601px) and (max-width: 1024px) */
+    .smallSliderBox {
+      width: 30vw !important;
+    }
+  }
+
+  input {
+    border: none;
+    outline: none; /* Remove outline for focus state in some browsers */
+  }
+
+  .slider-box {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+  
+  /* Media query for phones (max-width: 600px) */
+ 
+  /* @media only screen and (min-width: 401px) and (max-width: 600px) {
+    
+    .clothes-container {
+      height: 120vh;
+    }
+  } */
+
+  .main-box {
+    width: 100%;
+    /* height: 400px; */
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /* padding-left: 20px; */
+  }
+
+  .look-slider {
+    /* width: 100%; */
+    height: 100%;
+    overflow-x: scroll;
+   white-space: nowrap;
+   scroll-behavior: smooth;
+   overflow-y: hidden;
+   /* margin-left: 10px; */
+  }
+
+  .look-slider::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+  .scrollable-content {
+    display: inline-block;
+    /* width: 60vw;  */
+    height: 100%;
+    background-color: #ccc; /* Just for demonstration */
+    margin-right: 10px;
+    position: relative;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .slider-box {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+
+  @media only screen and (min-width: 601px) and (max-width: 1024px) {
+    /* Styles for tablets (min-width: 601px) and (max-width: 1024px) */
+    .slider-box {
+      margin-left: 10px !important;
+      /* margin-right: 10px !important; */
+    }
+  }
+
+  /* @media only screen and (max-width: 400px) {
+
+    #desctop-navbar {
+      top: 10vh !important;
+    }
+  }
+  @media only screen and (min-width: 380px) and (max-width: 420px) {
+    #desctop-navbar {
+      top: 63px !important;
+    }
+  } */
+
+  .look-box {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  .underlineHover {
+    color: grey; /* Assuming you want to inherit the color */
+  }
+  
+  .underlineHover:hover {
+    text-decoration: underline;
+    color: black; /* Change color to black on hover */
+  }
+
+  #desctop-navbar {
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+    position: fixed;
+  }
+
+  .font-weight-thin {
+    font-weight: 200 !important;
+  }
+
+  
+
+ 
+  
