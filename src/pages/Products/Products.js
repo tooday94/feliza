@@ -31,6 +31,7 @@ function Products() {
   const [sortType, setSortType] = useState(null);
   const location = useLocation();
   const [page, setPage] = useState(0);
+  const [pageCount, setPageCount] = useState(1)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +39,9 @@ function Products() {
       if (res?.success) {
         console.log(res.data);
         setProducts(res?.data.content);
+        setPageCount(res?.data?.totalPages)
         refreshFilter();
+        console.log(res?.data?.totalPages);
         window.scrollTo({  
           top: 0,
           behavior: "smooth" // Optional: adds smooth scrolling effect
@@ -46,10 +49,8 @@ function Products() {
       }
     };
 
-    // sortFilteredProducts();
-
     fetchData();
-  }, [id, refreshed]);
+  }, [id, refreshed, page]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -91,11 +92,11 @@ function Products() {
     }
   }, [location.pathname, prevScrollY]);
 
-  useEffect(() => {
-    if(sortType !== null){
-      sortFilteredProducts();
-    }
-  }, [sortType]);
+  // useEffect(() => {
+  //   if(sortType !== null){
+  //     sortFilteredProducts();
+  //   }
+  // }, [sortType]);
   
 
   const sortFilteredProducts = async () => {
@@ -126,7 +127,7 @@ function Products() {
     <Box sx={{ pt: { xs: "120px", md: "140px" } }} id="product_page">
       <Box
         id="desctop-navbar"
-        sx={{ top: { xs: "70px", sm: "85px", md: "90px" }, opacity: opacity }}
+        sx={{ top: { xs: "70px", sm: "85px", md: "90px" }, opacity: opacity, display: opacity == 0? 'none' : 'block'}}
       >
         <Box
           sx={{
@@ -170,9 +171,9 @@ function Products() {
         })}
       </Grid>
 
-      <Box display={"flex"} justifyContent={"center"}>
+      <Box display={pageCount == 1 ? 'none' : "flex"} justifyContent={"center"}>
         
-        <Pagination count={10} page={page} onChange={handleChange} />
+        <Pagination count={pageCount} page={page} onChange={handleChange} />
       </Box>
 
       <Drawer
