@@ -62,7 +62,7 @@ function Menu({setIsDrawerOpen}) {
         </AccordionSummary>
         <AccordionDetails>
           <Box paddingLeft={2} marginBottom={1}>
-            <Link to={`/products/6`} >
+            <Link to={`/products/17`} >
               <Typography onClick={() => setIsDrawerOpen(false)}>
                 Barcha mahsulotlar
               </Typography>

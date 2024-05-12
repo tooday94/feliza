@@ -35,16 +35,17 @@ function Homepage() {
               <CategoryIconsBox/>
               {/* <BestSellerBox/> */}
               <MainCategoryContainer list={clothesCategoryList} />
-              <CategorySlidersContainer categoryId={5}/>
-              <CategorySlidersContainer categoryId={6}/>
+              <CategorySlidersContainer categoryId={16}/>
+              <CategorySlidersContainer categoryId={2}/>
               <Box sx={{display: {sm: 'block', md: 'none'}}}>
                 <MainCategoryContainer list={accessoiresSliderList} />
+                <CategorySlidersContainer categoryId={16}/>
+                <CategorySlidersContainer categoryId={2}/>
               </Box>
-              <CategorySlidersContainer categoryId={5}/>
-              <CategorySlidersContainer categoryId={6}/>
+              
               <MainCategoryContainer list={shoesSliderList} />
-              <CategorySlidersContainer categoryId={5}/>
-              <CategorySlidersContainer categoryId={6}/>
+              <CategorySlidersContainer categoryId={16}/>
+              <CategorySlidersContainer categoryId={2}/>
               <Grid container spacing={1}>
               {
                 list.map((item, idx) => {
