@@ -1,7 +1,7 @@
 import { Close } from '@mui/icons-material'
 import { Box, IconButton, Typography, Button, TextField, Alert } from '@mui/material'
 import React, {useContext, useState} from 'react'
-import { createNewUser, getVerifyCodeToNewPassword, isRegistretedUser, loginUserWithPassword, restorePassword } from '../../api/Login';
+import { checkSMSCode, createNewUser, getVerifyCodeToNewPassword, isRegistretedUser, loginUserWithPassword, restorePassword } from '../../api/Login';
 import MyContext from '../../components/Context/MyContext';
 import {useNavigate} from 'react-router-dom'
 import { isValidPhoneNumber } from '../../components/Global/Functions';
@@ -51,10 +51,13 @@ function LoginPage() {
     }
 
     const loginUser = async() => {
+        const tempPass = password == '' ? registerPassword : password
         const userDetailes = {
             phoneNumber: tel,
-            password: password
+            password: tempPass
         } 
+
+        console.log(userDetailes);
 
         const res = await loginUserWithPassword(userDetailes);
         if(res.success) {
@@ -124,14 +127,15 @@ function LoginPage() {
 
         const res = await createNewUser(user);
         if(res.success) {
+            loginUser();
             console.log("Foydalanuvchi qoshildi");
-            setBirthDate('');
-            setFullname('')
-            setTel('')
-            setVerifyCode('');
-            setRegisterPassword('')
+            // setBirthDate('');
+            // setFullname('')
+            // setTel('')
+            // setVerifyCode('');
+            // setRegisterPassword('')
             setIsLoginPageOpen(false);
-            navigateUser();
+            
         } else {
             console.log('xatolik!!!!!');
         }
@@ -151,10 +155,6 @@ function LoginPage() {
             return;
         }
 
-        // if(lastAction.actionType == 'like_product') {
-        //     changeLikedList(lastAction.product_id)
-        // }
-
         if(lastAction.actionType == 'user_page') {
             navigate('/user_page')
             setLastAction('')
@@ -164,7 +164,7 @@ function LoginPage() {
 
     const handelPassForget = () => {
         getNewVerifyCode();
-        setIsRegistreted(3)
+        setIsRegistreted(4)
     }
 
     const getNewVerifyCode = async() => {
@@ -190,6 +190,22 @@ function LoginPage() {
             console.log(tel);
             setIsRegistreted(1);
         }
+
+    }
+
+    const checkVerifyCode = async() => {
+        const body = {
+            phoneNumber : tel,
+            code: verifyCode
+        }
+        const res = await checkSMSCode(body);
+
+        if(res?.data.success) {
+            setIsRegistreted(3);
+        } else {
+            alert('Tasdiqlash kodi xato kiritildi')
+        }
+
 
     }
 
@@ -250,13 +266,11 @@ function LoginPage() {
                     </Typography>
                 </Box>
             </Box>
-
-            <Box marginY={2} width={'300px'} sx={{display: isRegistreted == 2? 'block' : 'none'}}>
-                <Box>
-                    <Typography>
-                        Tasdiqlash kodi sizga SMS orqali yuboriladi
-                    </Typography>
-                <TextField variant='outlined' disabled value={tel} size='small' fullWidth/>
+            <Box sx={{display: isRegistreted == 2? 'block' : 'none'}}>
+                <Box width='300px' marginTop={3}>
+                <Typography>
+                    Tasdiqlash kodi sizga sms orqali yuborildi
+                </Typography>
                 <TextField 
                     variant='outlined' 
                     size='small' 
@@ -266,6 +280,19 @@ function LoginPage() {
                     value={verifyCode}
                     onChange={(e) => setVerifyCode(e.target.value)}
                     />
+                </Box>
+            
+                <Button sx={{marginTop: 2}} variant= 'contained' onClick={checkVerifyCode}>
+                    Yuborish
+                </Button>
+            </Box>
+
+
+            <Box marginY={2} width={'300px'} sx={{display: isRegistreted == 3? 'block' : 'none'}}>
+                <Box>
+                   
+                <TextField variant='outlined' disabled value={tel} size='small' fullWidth/>
+                
                 <TextField 
                     variant='outlined' 
                     size='small' 
@@ -304,7 +331,7 @@ function LoginPage() {
                 </Button>
             </Box>
 
-            <Box sx={{display: isRegistreted == 3? 'block' : 'none'}}>
+            <Box sx={{display: isRegistreted == 4? 'block' : 'none'}}>
                 <Typography>
                     Tasdiqlash kodi sizga sms orqali yuborildi
                 </Typography>

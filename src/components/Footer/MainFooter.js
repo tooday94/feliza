@@ -17,7 +17,7 @@ import { MdOutlineIndeterminateCheckBox } from "react-icons/md";
 function MainFooter() {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
-  const { setLastAction, setIsLoginPageOpen } = useContext(MyContext);
+  const { setLastAction, setIsLoginPageOpen, user } = useContext(MyContext);
 
   const navigateUser = () => {
     if (isValidPhoneNumber(value)) {
@@ -34,6 +34,7 @@ function MainFooter() {
 
   return (
     <Box marginTop={5} sx={{ boxShadow: "inset 0 0.5px 0 black" }}>
+      <Box sx={{display: user === null ? 'block' : 'none'}}>
       <Box align={"center"} paddingTop={2}>
         <Typography fontWeight={2}>
           Qaynoq chegirmalar va yangi mahsulotlar haqida birinchilardan bo'lib
@@ -65,6 +66,7 @@ function MainFooter() {
           </Box>
         </Grid>
       </Grid>
+      </Box>
       <Box align={"center"} marginTop={3} paddingX={2}>
         {footerNavList.map((item, idx) => {
           return (

@@ -74,6 +74,21 @@ const restorePassword = async(body) => {
     }
 }
 
+const checkSMSCode = async(body) => {
+    try {
+        const res = await axios.post(baseURL + 'smsCodeVerification', body);
+        if(res.status = 200) {
+            console.log(res);
+            return {data: res.data, success: true}
+           
+        } else {
+            return {success: false}
+        }
+    } catch (error) {
+        return {success: false}
+    }
+}
 
 
-export {isRegistretedUser, createNewUser, loginUserWithPassword, getVerifyCodeToNewPassword, restorePassword}
+
+export {isRegistretedUser, createNewUser, loginUserWithPassword, getVerifyCodeToNewPassword, restorePassword, checkSMSCode}
