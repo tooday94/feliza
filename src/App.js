@@ -20,6 +20,9 @@ import LookPage from "./pages/LookPage/LookPage";
 import SaleProducts from "./pages/SaleProducts/SaleProducts";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import Order from "./pages/Order/Order";
+import Coupons from "./components/UserPage/Coupons";
+import MyAddresses from "./components/UserPage/MyAddresses";
+import StatusPage from "./components/UserPage/StatusPage";
 
 function App() {
   const initialLastSeenList = [];
@@ -214,6 +217,9 @@ function App() {
               <Route path="/look/:id" element={<LookPage />} />
               <Route path="/my_orders" element={<MyOrders />} />
               <Route path="/order/:id" element={<Order />} />
+              <Route path="/coupons" element={<Coupons/>} />
+              <Route path="/my_addresses" element={<MyAddresses/>} />
+              <Route path="/my_status" element={<StatusPage/>} />
             </Routes>
             <MainFooter />
           </BrowserRouter>

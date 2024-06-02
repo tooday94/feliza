@@ -13,26 +13,26 @@ export const clothCategoryList = [
         icon: dressIcon
     },
     {
-        id: 9,
+        id: 29,
         nameUZB: 'Islomiy Kiyimlar',
-        nameRUS: 'Хиджаб',
+        nameRUS: 'Исламская мода',
         icon: islamicIcon
     },
     {
         id: 11,
-        nameUZB: 'Oyoq kiyimlari',
+        nameUZB: 'Oyoq kiyim',
         nameRUS: 'Обувь',
         icon: footwear
     },
 
     {
-        id: 12,
+        id: 42,
         nameUZB: 'Aksesuar',
         nameRUS: 'Аксессуар',
         icon: accsessoiresIcon
     },
     {
-        id: 13,
+        id: 49,
         nameUZB: 'Sumka',
         nameRUS: 'Сумка',
         icon: accsessoires

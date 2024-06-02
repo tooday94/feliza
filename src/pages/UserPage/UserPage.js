@@ -60,13 +60,13 @@ function UserPage() {
 
               <Box marginTop={2}>
                 <Typography>
-                  {customer.fullName}
+                  {customer?.fullName}
                 </Typography>
               </Box>
 
               <Box>
                 <Typography fontSize={12} color={'grey'}>
-                  {customer.phoneNumber}
+                  {customer?.phoneNumber}
                 </Typography>
               </Box>
 

@@ -4,7 +4,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import filialIcon from  '../../assets/icons/shops.png'
-import orderIcon from  '../../assets/icons/order.png'
 import contactIcon from  '../../assets/icons/communicate.png'
 import AccordionBtn from '../../components/MenuPage/Accordion';
 import { clothCategoryList } from '../../data/CategoryList';
@@ -57,14 +56,14 @@ function Menu({setIsDrawerOpen}) {
             <Box sx={{width: '25px', height: '25px'}}>
               <img src={saleIcon} alt="" />
             </Box>
-            <Typography>{ isUzbek? 'Sale' : 'Sale'}</Typography>
+            <Typography>{'Sale'}</Typography>
           </Box>
         </AccordionSummary>
         <AccordionDetails>
           <Box paddingLeft={2} marginBottom={1}>
-            <Link to={`/products/17`} >
+            <Link to={`/products/50`} >
               <Typography onClick={() => setIsDrawerOpen(false)}>
-                Barcha mahsulotlar
+                { isUzbek ? 'Barcha mahsulotlar' : 'Все товары'}
               </Typography>
             </Link>
           </Box>

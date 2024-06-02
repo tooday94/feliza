@@ -1,23 +1,18 @@
 import React, { useContext, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
 import { Box, TextField, Button, Typography, Grid } from "@mui/material";
-import MainDropdown from "./MainDropdown";
-import SubRegionDropDown from "./SubRegionDropDown";
-import PostFilialDropDown from "./PostFilialDropDown";
-import { addAddress } from "../../api/Adress";
 import MyContext from "../Context/MyContext";
+import { addAddress } from "../../api/Adress";
+import MainDropdown from "../CheckOut/MainDropdown";
+import SubRegionDropDown from "../CheckOut/SubRegionDropDown";
+import PostFilialDropDown from "../CheckOut/PostFilialDropDown";
 
-function AdresseForm({
-  adresseList,
-  setHasAdress,
-  setAddressId,
-  setNewAddress,
-}) {
+function AddNewAddress({setHasNewAddress}) {
   const [region, setRegion] = useState("");
   const [district, setDistrict] = useState("");
   const [postFilial, setPostFilial] = useState("");
   const [street, setStreet] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
+  
 
   const { user } = useContext(MyContext);
 
@@ -33,35 +28,21 @@ function AdresseForm({
     const res = await addAddress(adress);
 
     if (res.success) {
-      setAddressId(res.data.object.id);
-      setHasAdress(true);
-      setNewAddress((prev) => prev + 1);
+      console.log('manzil qöshildi');
+      setHouseNumber('')
+      setRegion('');
+      setDistrict('');
+      setStreet('')
+      setPostFilial('')
+      setHasNewAddress(prev => prev + 1)
+    } else {
+        alert('Manzil qöshishda xatolik')
     }
   };
 
-  const addressCounter = adresseList.length;
 
   return (
     <Box sx={{ marginTop: 2, width: "100%" }}>
-      {addressCounter > 0 && (
-        <Box
-          sx={{ marginY: 1, display: "flex", justifyContent: "space-between" }}
-        >
-          <Box>
-            <Typography sx={{ color: "grey" }}>
-              Sizda mavjud manzillar soni: {addressCounter} ta
-            </Typography>
-          </Box>
-          <Button
-            size="small"
-            variant="contained"
-            onClick={() => setHasAdress(true)}
-            color="success"
-          >
-            Tanlash
-          </Button>
-        </Box>
-      )}
       <Box
         display={"flex"}
         sx={{ border: "1px solid grey", borderRadius: "5px" }}
@@ -154,7 +135,7 @@ function AdresseForm({
                   onChange={(e) => setStreet(e.target.value)}
                 />
               </Box>
-              <Button size="small" sx={{ color: "white" }}>
+              <Button size="small" sx={{ color: "white", opacity: 0 }}>
                 Street
               </Button>
             </Box>
@@ -195,4 +176,4 @@ function AdresseForm({
   );
 }
 
-export default AdresseForm;
+export default AddNewAddress;

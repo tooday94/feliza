@@ -44,7 +44,7 @@ function AccordionBtn({setIsDrawerOpen, item}) {
           <Box sx={{borderBottom: '1px solid lightgray', py: 1}}>
             <Link to={`/products/${item.id}`} >
               <Typography marginLeft='30px' onClick={() => setIsDrawerOpen(false)} my={1}>
-                Barcha {item.nameUZB}
+                {isUzbek ? `Barcha ${item.nameUZB}` : 'Все товары'}
               </Typography>
             </Link>
           </Box>

@@ -143,18 +143,6 @@ a{
     }
   }
 
-  /* @media only screen and (max-width: 400px) {
-
-    #desctop-navbar {
-      top: 10vh !important;
-    }
-  }
-  @media only screen and (min-width: 380px) and (max-width: 420px) {
-    #desctop-navbar {
-      top: 63px !important;
-    }
-  } */
-
   .look-box {
     width: 100%;
     background-size: cover;
@@ -179,6 +167,22 @@ a{
 
   .font-weight-thin {
     font-weight: 200 !important;
+  }
+
+  .img-box {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  .coupon-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), /* Soft shadow */
+                0 6px 20px rgba(0, 0, 0, 0.1); /* Slightly larger and more diffuse shadow */
+    border-radius: 8px; /* Optional: rounded corners for a softer look */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
+    position: relative;
+    
   }
 
   

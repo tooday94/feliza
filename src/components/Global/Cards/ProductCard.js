@@ -9,7 +9,7 @@ import MyContext from "../../Context/MyContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
 import { useEffect } from "react";
-import { formatNumberWithSpaces } from "../Functions";
+import { formatNumberWithSpaces, truncateText } from "../Functions";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
 
@@ -68,7 +68,7 @@ export default function ProductCard({ item, bigSize }) {
               component="div"
               sx={{ fontWeight: "1px" }}
             >
-              {isUzbek ? item.nameUZB : item.nameRUS}
+              {isUzbek ? truncateText(item.nameUZB) : truncateText(item.nameRUS)}
             </Typography>
           </Link>
 
