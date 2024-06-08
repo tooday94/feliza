@@ -132,14 +132,21 @@ export default function HomePageHeader() {
               <Box display={"flex"} gap={1} paddingRight={2}>
                 <Typography
                   sx={{ textDecoration: isUzbek ? "underline" : "none" }}
-                  onClick={() => setIsUzbek(true)}
+                  onClick={() => {
+                    localStorage.setItem('isUzbek', JSON.stringify(true));
+                    setIsUzbek(true)
+                  } }
+                  
                 >
                   Uzb
                 </Typography>
                 <Typography>/</Typography>
                 <Typography
                   sx={{ textDecoration: isUzbek ? "none" : "underline" }}
-                  onClick={() => setIsUzbek(false)}
+                  onClick={() => {
+                    localStorage.setItem('isUzbek', JSON.stringify(false));
+                    setIsUzbek(false)
+                  }}
                 >
                   Рус
                 </Typography>

@@ -54,12 +54,12 @@ function MobileContainer({handelLikeList, item, isSale,
                       <Box>
                         <Typography>
                           {
-                            item?.nameUZB
+                            isUzbek? item?.nameUZB : item?.nameRUS
                           }
                         </Typography>
                         <Typography>
                           {
-                            item?.color?.nameUZB
+                            isUzbek ? item?.color?.nameUZB : item?.color?.nameRUS
                           }
                         </Typography>
                       </Box>
@@ -88,7 +88,7 @@ function MobileContainer({handelLikeList, item, isSale,
                     </Button>
                   </Box>
                   <Box  sx={{ mb: 2}}>
-                    <ProductDetailes descriptionUZB = {item?.descriptionUZB} descriptionRUS = {item.product?.descriptionRUS}/> 
+                    <ProductDetailes descriptionUZB = {item?.descriptionUZB} descriptionRUS = {item?.descriptionRUS}/> 
                   </Box>
                 </Grid>
               </Grid>

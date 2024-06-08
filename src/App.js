@@ -29,11 +29,20 @@ function App() {
   const [isLoginPageOpen, setIsLoginPageOpen] = useState(false);
   const [isUserActive, setIsUserActive] = useState(false);
   const [likedList, setLikedList] = useState([]);
-  const [isUzbek, setIsUzbek] = useState(true);
   const [orderItems, setOrderItems] = useState([]);
   const [lastAction, setLastAction] = useState("");
   const [cardItems, setCardItems] = useState([]);
   const [refreshCard, setRefreshCard] = useState(0);
+
+  const [isUzbek, setIsUzbek] = useState(() => {
+    const storedUserData = localStorage.getItem("isUzbek");
+
+    if (storedUserData) {
+      return JSON.parse(storedUserData);
+    } else {
+      return true;
+    }
+  });
 
   const [user, setUser] = useState(() => {
     const storedUserData = localStorage.getItem("userData");

@@ -21,40 +21,9 @@ import DeliveryInformationRu from '../Information/DeliveryInformationRu';
 
 function ProductDetailes({descriptionUZB, descriptionRUS}) {
 
-    const [lastSeenProducts, setLastSeenProducts] = useState([]);
-    const [likedProducts, setLikedProducts] = useState([]);
-    const {likedList, lastSeenList, isUzbek} = useContext(MyContext)
+    const {isUzbek} = useContext(MyContext)
 
-    
-    
-    // useEffect(() => {
-    //     const fetchData = async() => {
-    //         const res = await getAllProduct();
-    //         if(res.success) {
-    //             const list = [...res.data]
-    //             const newArray = list.filter(item => lastSeenList && lastSeenList.includes(item?.product?.id));
-    //             console.log(newArray);
-    //             console.log(lastSeenList);
-    //             setLastSeenProducts(newArray);
-    //         }
-    //     }
 
-    //     fetchData();
-    // }, [lastSeenList])
-
-    
-
-    // useEffect(() => {
-    //     const fetchData = async() => {
-    //       const res = await getAllProduct();
-    //       if(res.success) {
-    //         const arr = likedList.map(item => item?.product?.id)
-    //         const newArray = res.data.filter(obj => arr.includes(obj.product.id));
-    //         setLikedProducts(newArray)
-    //       }
-    //     }
-    //     fetchData();
-    //   }, [likedList])
 
     
     
@@ -79,7 +48,7 @@ function ProductDetailes({descriptionUZB, descriptionRUS}) {
                 <AccordionDetails>
 
                     <Typography>
-                        {descriptionUZB}
+                        {isUzbek? descriptionUZB : descriptionRUS}
                     </Typography>
 
                 </AccordionDetails>
