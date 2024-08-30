@@ -37,8 +37,10 @@ function MainFooter() {
       <Box sx={{display: user === null ? 'block' : 'none'}}>
       <Box align={"center"} paddingTop={2}>
         <Typography fontWeight={2}>
-          Qaynoq chegirmalar va yangi mahsulotlar haqida birinchilardan bo'lib
-          habardor bo'ling
+        {
+          isUzbek ? "Qaynoq chegirmalar va yangi mahsulotlar haqida birinchilardan bo'lib habardor bo'ling!" :
+          "Узнайте первыми о горячих скидках и новых коллекциях!"
+        }
         </Typography>
       </Box>
 
@@ -48,7 +50,7 @@ function MainFooter() {
             <TextField
               variant="standard"
               fullWidth
-              label="Telefon raqamingiz..."
+              label= {isUzbek? "Telefon raqamingiz..." : "Ваш номер телефона..."}
               onChange={(e) => setValue(e.target.value)}
               value={value}
               id="footer-phone-input"
@@ -61,7 +63,7 @@ function MainFooter() {
               sx={{ marginTop: 2 }}
               onClick={navigateUser}
             >
-              Kirish
+              {isUzbek? "Yuborish" : "Отправить"}
             </Button>
           </Box>
         </Grid>

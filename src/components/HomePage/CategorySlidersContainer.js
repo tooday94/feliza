@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { getCategoryById } from "../../api/Category";
 import { useContext } from "react";
 import MyContext from "../Context/MyContext";
-import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 function CategorySlidersContainer({ categoryId }) {
   const [list, setList] = useState([]);
@@ -72,7 +72,7 @@ function CategorySlidersContainer({ categoryId }) {
             : ""}
         </Typography>
 
-        <MdOutlineKeyboardDoubleArrowRight
+        <KeyboardArrowRightIcon
           style={{ width: "25px", height: "25px" }}
         />
       </Box>

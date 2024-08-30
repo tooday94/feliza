@@ -7,7 +7,7 @@ export const footerNavList = [
     {
         nameUZ: 'Chergirmalar',
         nameRU: 'Скидки',
-        link: '/'
+        link: '/products/1'
     },
     {
         nameUZ: 'Filiallarimiz',
