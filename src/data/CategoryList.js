@@ -9,7 +9,7 @@ export const clothCategoryList = [
     {
         id: 1,
         nameUZB: 'Kiyimlar',
-        nameRUS: 'Одежды',
+        nameRUS: 'Одежа',
         icon: dressIcon
     },
     {

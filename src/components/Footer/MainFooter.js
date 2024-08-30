@@ -17,7 +17,7 @@ import { MdOutlineIndeterminateCheckBox } from "react-icons/md";
 function MainFooter() {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
-  const { setLastAction, setIsLoginPageOpen, user } = useContext(MyContext);
+  const { setLastAction, setIsLoginPageOpen, user, isUzbek } = useContext(MyContext);
 
   const navigateUser = () => {
     if (isValidPhoneNumber(value)) {
@@ -76,7 +76,7 @@ function MainFooter() {
               sx={{ marginX: 1 }}
               onClick={() => navigate(item.link)}
             >
-              <Typography>{item.nameUZ}</Typography>
+              <Typography>{isUzbek? item.nameUZ : item.nameRU}</Typography>
             </Box>
           );
         })}
@@ -129,7 +129,9 @@ function MainFooter() {
         paddingBottom={1}
       >
         <Typography fontWeight={1} fontSize={12}>
-          Mualliflik huquqi to'liq himoyalangan
+         {
+          isUzbek? "Mualliflik huquqi to'liq himoyalangan" : "Авторские права полностью защищены"
+         } 
         </Typography>
         <Typography fontWeight={1}>© 2024 Feliza</Typography>
       </Box>

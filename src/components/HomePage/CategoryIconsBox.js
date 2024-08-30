@@ -2,9 +2,13 @@ import { Box, Grid, Typography, Card } from "@mui/material";
 import React, { useContext } from "react";
 import { categoryIconList } from "../../data/DataList";
 import MyContext from "../Context/MyContext";
+import { useNavigate } from "react-router-dom";
+
 
 function CategoryIconsBox() {
   const { isUzbek } = useContext(MyContext);
+  const navigate = useNavigate();
+
 
   return (
     <Box
@@ -16,7 +20,7 @@ function CategoryIconsBox() {
         {categoryIconList.map((item, idx) => {
           return (
             <Grid item xs={3} key={item.nameRU + item.nameUZ}>
-              <Box sx={{ height: "22vw", width: "100%" }}>
+              <Box sx={{ height: "22vw", width: "22vw", borderRadius: '50%', overflow: 'hidden'}} onClick = {() => navigate(`/products/${item.id}`)}>
                 <Card sx={{ height: "100%", width: "100%" }}>
                   <img src={item.url} alt="" />
                 </Card>

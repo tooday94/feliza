@@ -5,7 +5,7 @@ import Slider from '../../components/Sliders/Slider'
 import SliderMain from '../../components/Sliders/Slider'
 import CategoryCard from '../../components/HomePage/CategoryCard'
 import SaleBox from '../../components/HomePage/SaleBox'
-import { CategoryCardList, accessoiresSliderList, categorySliderList, shoesSliderList } from '../../data/DataList'
+import { CategoryCardList, categorySliderList, categorySliderList2, categorySliderList3, nessaCategoryList } from '../../data/DataList'
 import SmallCards from '../../components/Global/Cards/SmallCards'
 import BestSellerBox from '../../components/HomePage/BestSellerBox'
 import MainCategoryContainer from '../../components/HomePage/MainCategoryContainer'
@@ -31,23 +31,26 @@ function Homepage() {
         <Grid container justifyContent='center'>
             <Grid item xs={12}  sx={{marginTop: {xs: '6vh', sm: '60px', lg: '60px'}}}>
               <SliderMain/>
-              {/* <SaleBox/> */}
               <CategoryIconsBox/>
-              {/* <BestSellerBox/> */}
               <MainCategoryContainer list={clothesCategoryList} />
-              <CategorySlidersContainer categoryId={16}/>
-              <CategorySlidersContainer categoryId={2}/>
+              <CategorySlidersContainer categoryId={69}/>
+              <CategorySlidersContainer categoryId={41}/>
               <Box sx={{display: {sm: 'block', md: 'none'}}}>
-                <MainCategoryContainer list={accessoiresSliderList} />
-                <CategorySlidersContainer categoryId={16}/>
-                <CategorySlidersContainer categoryId={2}/>
+                <MainCategoryContainer list={categorySliderList2} />
+                <CategorySlidersContainer categoryId={26}/>
+                <CategorySlidersContainer categoryId={19}/>
               </Box>
               
-              <MainCategoryContainer list={shoesSliderList} />
-              <CategorySlidersContainer categoryId={16}/>
-              <CategorySlidersContainer categoryId={2}/>
+              <MainCategoryContainer list={nessaCategoryList} />
+              <CategorySlidersContainer categoryId={52}/>
+              <CategorySlidersContainer categoryId={45}/>
+              
+              
+              <MainCategoryContainer list={categorySliderList3} />
+              <CategorySlidersContainer categoryId={55}/>
+              <CategorySlidersContainer categoryId={7}/>
               <Grid container spacing={1}>
-              {
+              {/* {
                 list.map((item, idx) => {
                     return(
                         <Grid item xs = {12} md = {6} lg = {4} key={idx + item.title}>
@@ -55,7 +58,7 @@ function Homepage() {
                         </Grid>
                     )
                 })
-              }
+              } */}
               </Grid>
             </Grid>
         </Grid>

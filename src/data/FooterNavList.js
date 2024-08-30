@@ -1,38 +1,38 @@
 export const footerNavList = [
     {
         nameUZ: 'Biz haqimizda',
-        nameRU: 'o kampanii',
+        nameRU: 'О нас',
         link: '/'
     },
     {
         nameUZ: 'Chergirmalar',
-        nameRU: 'Skidki',
+        nameRU: 'Скидки',
         link: '/'
     },
     {
         nameUZ: 'Filiallarimiz',
-        nameRU: 'o kampanii',
+        nameRU: 'Наши филиалы',
         link: '/'
     },
     {
-        nameUZ: 'Kariera',
-        nameRU: 'o kampanii',
+        nameUZ: 'Karyera',
+        nameRU: 'Карьера',
         link: '/'
     },
     {
-        nameUZ: 'Haridorga yordam',
-        nameRU: 'o kampanii',
+        nameUZ: 'Xaridorga yordam',
+        nameRU: 'Помощь покупателю',
         link: '/'
     },
     {
         nameUZ: "Ko'p beriladigan savollar",
-        nameRU: 'o kampanii',
+        nameRU: 'Часто задаваемые вопросы',
         link: '/'
     },
     {
         nameUZ: 'Yetkazib berish',
-        nameRU: 'o kampanii',
+        nameRU: 'Доставка',
         link: '/'
     },
-
+   
 ]
