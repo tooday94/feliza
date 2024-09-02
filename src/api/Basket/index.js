@@ -64,6 +64,28 @@ const deleteCartItem = async(id) => {
     }
 }
 
+const updateCartItem = async(id, item) => {
+    try {
+        const token = localStorage.getItem('token');
+        console.log(token);
+        const res = await axios.put(baseURL + '/' + id, item, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+        });
+        if(res.status == 200) {
+            return {success: true, data: res.data}
+        }else {
+            return {success: false}
+        }
+    } catch (error) {
+        return {success: false}
+    }
+}
 
 
-export {addProductToBasket, getCartItemsByCustomerId, deleteCartItem}
+
+
+
+export {addProductToBasket, getCartItemsByCustomerId, deleteCartItem, updateCartItem}
