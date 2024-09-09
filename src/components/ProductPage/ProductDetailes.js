@@ -15,6 +15,7 @@ import PaymentInformationUz from '../Information/PaymentInformationUz';
 import PaymentInformationRu from '../Information/PaymentInformationRu';
 import DeliveryInformationUz from '../Information/DeliveryInformationUz';
 import DeliveryInformationRu from '../Information/DeliveryInformationRu';
+import Deskription from './Deskription';
 
 
 
@@ -47,9 +48,11 @@ function ProductDetailes({descriptionUZB, descriptionRUS}) {
                 </AccordionSummary>
                 <AccordionDetails>
 
-                    <Typography>
+                    {/* <Typography>
                         {isUzbek? descriptionUZB : descriptionRUS}
-                    </Typography>
+                    </Typography> */}
+
+                    <Deskription value={isUzbek? descriptionUZB : descriptionRUS}/>
 
                 </AccordionDetails>
             </Accordion>

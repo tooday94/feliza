@@ -35,7 +35,7 @@ function MainFooter() {
   return (
     <Box marginTop={5} sx={{ boxShadow: "inset 0 0.5px 0 black" }}>
       <Box sx={{display: user === null ? 'block' : 'none'}}>
-      <Box align={"center"} paddingTop={2}>
+      <Box align={"center"} padding={2} >
         <Typography fontWeight={2}>
         {
           isUzbek ? "Qaynoq chegirmalar va yangi mahsulotlar haqida birinchilardan bo'lib habardor bo'ling!" :
