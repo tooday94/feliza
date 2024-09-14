@@ -5,9 +5,13 @@ import { Link } from "react-router-dom";
 import ColorCircle from "../ColorCircle";
 import { deleteCartItem, updateCartItem } from "../../../api/Basket";
 import { CiTrash } from "react-icons/ci";
+import { grey } from "@mui/material/colors";
+import { formatNumberWithSpaces } from "../Functions";
 
 function BasketCard({ item }) {
-  const { setRefreshCard, user } = useContext(MyContext);
+  const { setRefreshCard, user, isUzbek } = useContext(MyContext);
+
+  const isSale = item.sale > 0;
 
   const deleteCartItemById = async () => {
     const res = await deleteCartItem(item.cartItemId);
@@ -17,38 +21,50 @@ function BasketCard({ item }) {
   };
 
   console.log(item);
-  
+
   const increaseQuantityOfProduct = () => {
-    
-     const fetchData = async() => {
-      const newQuantity = item.quantity +1
+    const fetchData = async () => {
+      const newQuantity = item.quantity + 1;
       console.log(newQuantity);
       const newCartItem = {
-        customerId : user.customerId,
-        productSizeVariantId : item.productSizeVariant.id,
-        quantity : newQuantity
-      }
+        customerId: user.customerId,
+        productSizeVariantId: item.productSizeVariant.id,
+        quantity: newQuantity,
+      };
       console.log(newCartItem);
       const res = await updateCartItem(item.cartItemId, newCartItem);
       if (res.success) {
         setRefreshCard((prev) => prev + 1);
-        console.log('Özgardi');
+        console.log("Özgardi");
       } else {
-        console.log('xatolik');
+        console.log("xatolik");
       }
-     }
-      fetchData();
+    };
+
+    fetchData();
   };
 
   const decreaseQuantityOfProduct = async () => {
-    const item = {
+    const fetchData = async () => {
+      const newQuantity = item.quantity - 1;
+      console.log(newQuantity);
+      const newCartItem = {
+        customerId: user.customerId,
+        productSizeVariantId: item.productSizeVariant.id,
+        quantity: newQuantity,
+      };
+      console.log(newCartItem);
+      const res = await updateCartItem(item.cartItemId, newCartItem);
+      if (res.success) {
+        setRefreshCard((prev) => prev + 1);
+        console.log("Özgardi");
+      } else {
+        console.log("xatolik");
+      }
+    };
 
-    }
-    const res = await updateCartItem(item.cartItemId, item);
-    if (res.success) {
-      setRefreshCard((prev) => prev + 1);
-    }
-  }
+    fetchData();
+  };
 
   return (
     <Box
@@ -82,36 +98,91 @@ function BasketCard({ item }) {
               marginBottom={2}
             >
               <Typography sx={{ fontWeight: "bold" }}>
-                {item.nameUZB}
+                {isUzbek ? item.nameUZB : item.nameRUS}
               </Typography>
 
-              <Typography>{item.sellPrice * item.quantity} so'm</Typography>
+              {/* <Typography>{item.sellPrice * item.quantity} so'm</Typography> */}
+              <Box>
+                {isSale && (
+                  <Typography fontSize={14} sx={{ color: "red" }}>
+                    {formatNumberWithSpaces(item.sellPrice * item.quantity)}{" "}
+                    {isUzbek ? "so'm" : "сум"}
+                  </Typography>
+                )}
+                <Typography
+                  fontSize={12}
+                  sx={{
+                    textDecoration: isSale ? "line-through" : "none",
+                    color: isSale ? "grey" : "black",
+                  }}
+                >
+                  {formatNumberWithSpaces(item.sellPrice * item.quantity)}{" "}
+                  {isUzbek ? "so'm" : "сум"}
+                </Typography>
+              </Box>
             </Box>
             <Box display="flex" justifyContent="space-between">
               <Box>
                 <Box display={"flex"} gap={1}>
-                  <Typography color={"grey"}>Soni:</Typography>
+                  <Typography color={"grey"}>
+                    {
+                      isUzbek? "Soni:" : "Количество:"
+                    }
+                  </Typography>
                   {/* <Typography>{item.quantity}</Typography> */}
 
-                  <Box display={"flex"} justifyContent={"space-between"} sx={{border: '1px solid grey'}}>
-                    <Typography marginX={1}>
+                  <Box
+                    display={"flex"}
+                    justifyContent={"space-between"}
+                    sx={{ border: "1px solid grey" }}
+                  >
+                    <Typography
+                      marginX={1}
+                      sx={{ color: item?.quantity > 1 ? "black" : grey[400] }}
+                      onClick={() => {
+                        if (item?.quantity > 1) {
+                          decreaseQuantityOfProduct();
+                        }
+                      }}
+                    >
                       -
                     </Typography>
                     <Typography marginX={2}>{item.quantity}</Typography>
-                    <Typography marginX={1} onClick={() => increaseQuantityOfProduct()}>
+                    <Typography
+                      marginX={1}
+                      sx={{
+                        color:
+                          item?.quantity < item?.productSizeVariant?.quantity
+                            ? "black"
+                            : grey[400],
+                      }}
+                      onClick={() => {
+                        if (
+                          item?.quantity < item?.productSizeVariant?.quantity
+                        ) {
+                          increaseQuantityOfProduct();
+                        }
+                      }}
+                    >
                       +
                     </Typography>
                   </Box>
                 </Box>
                 <Box display={"flex"} gap={1}>
-                  <Typography color={"grey"}>O'lchami:</Typography>
+                  <Typography color={"grey"}>
+                    {
+                      isUzbek? "O'lchami:" : "Размер:"
+                    }
+                  </Typography>
                   <Typography>{item.productSizeVariant.size}</Typography>
                 </Box>
 
                 <Box display="flex">
                   <ColorCircle color={item.colorCode} />
                   <Typography sx={{ marginLeft: 2 }}>
-                    {item.colorNameUZB}
+                    {
+                      isUzbek ? item.colorNameUZB : item.colorNameRUS
+                    }
                   </Typography>
                 </Box>
 

@@ -8,13 +8,15 @@ import { getAllProduct } from "../../../api/Product";
 import SmallSlider from "../../Sliders/SmallSlider";
 
 function LastSeenSLider() {
-  const { lastSeenList } = useContext(MyContext);
+  const { lastSeenList, isUzbek } = useContext(MyContext);
   console.log(lastSeenList);
 
   return (
     <Box marginTop={3}>
       <Typography variant="h5" paddingY={1}>
-        Oxirgi ko'rilgan mahsulotlar
+      {
+        isUzbek? "Oxirgi ko'rilgan mahsulotlar" : "Недавно просмотренные товары"
+      }
       </Typography>
       <SmallSlider list={lastSeenList} />
     </Box>

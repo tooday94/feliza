@@ -21,7 +21,7 @@ function CheckOut() {
   const [payment, setPayment] = useState('PAYME');
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const {user, orderItems} = useContext(MyContext)
+  const {user, orderItems, isUzbek} = useContext(MyContext)
   const [addressId, setAddressId] = useState(0)
   const [newAddress, setNewAddress] = useState(0)
   const [errorList, setErrorList] = useState([])
@@ -105,7 +105,9 @@ function CheckOut() {
               <Box display={'flex'} alignItems={'center'}>
                 <MediumIcon icon = {homeIcon}/>
                 <Typography sx={{marginLeft: 1}}>
-                  Manzilingiz
+                  {
+                    isUzbek? "Manzilingiz" : "Ваш адрес"
+                  }
                 </Typography>
               </Box>
               {
@@ -119,7 +121,9 @@ function CheckOut() {
               <Box display={'flex'} alignItems={'center'} sx={{marginTop: 2}}>
                 <MediumIcon icon = {contactIcon}/>
                 <Typography sx={{marginLeft: 1}}>
-                  Kontakt ma'lumotlari
+                  {
+                    isUzbek? "Kontakt ma'lumotlari" : "Контактные данные"
+                  }
                 </Typography>
               </Box>
 
@@ -130,7 +134,9 @@ function CheckOut() {
 
               <Box sx={{display: 'flex', justifyContent: 'end'}}>
                 <Button  size='small'  variant='contained'   sx={{marginTop: 2, marginBottom: 1}} onClick={createOrder}>
-                  Tölovni amalga oshirish
+                  {
+                    isUzbek? "To'lovni amalga oshirish" : "Осуществить платеж"
+                  }
                 </Button>
               </Box>
             </Box>

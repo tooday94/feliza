@@ -20,7 +20,7 @@ const getProductListByCategoryID = async(id, page) => {
     try {
         const res = await axios.get(baseURL + '/getProductByCategoryId/' + id, {
             params: {
-                page: page,
+                page: page-1,
                 size: 15
             }
         });

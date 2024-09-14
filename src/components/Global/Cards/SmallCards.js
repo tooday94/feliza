@@ -37,9 +37,9 @@ function SmallCards({ item }) {
             justifyContent="space-between"
             sx={{ height: { xs: "180px", md: "600px" } }}
           >
-            <Box display="flex" justifyContent="space-between">
+            <Box display="flex" justifyContent="space-between" gap={1}>
               <Box>
-                <Typography fontSize={12}>{item?.nameUZB}</Typography>
+                <Typography fontSize={12}>{isUzbek? item?.nameUZB : item.nameRUS}</Typography>
                 <Typography color={grey[400]} fontSize={12}>
                   Ref:
                 </Typography>
@@ -53,13 +53,13 @@ function SmallCards({ item }) {
                 flexDirection={"column"}
               >
                 {item?.sale > 0 && (
-                  <Typography fontSize={14} sx={{ color: "red" }}>
+                  <Typography fontSize={12} sx={{ color: "red" }}>
                     {formatNumberWithSpaces(item.salePrice)}{" "}
                     {isUzbek ? "so'm" : "сум"}
                   </Typography>
                 )}
                 <Typography
-                  fontSize={item?.sale > 0 ? 12 : 14}
+                  fontSize={12}
                   sx={{
                     textDecoration: item?.sale > 0 ? "line-through" : "none",
                     color: item?.sale > 0 ? "grey" : "black",

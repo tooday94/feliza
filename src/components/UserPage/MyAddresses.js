@@ -36,10 +36,10 @@ function MyAddresses() {
                 <Box>
                   <Typography>{item.region.name}</Typography>
                   <Typography>{item.subRegion.name}</Typography>
-                  <Typography>{item.postFilial.postFilialName}</Typography>
+                  <Typography>{item?.postFilial?.postFilialName}</Typography>
                   <Box display={"flex"} gap={1}>
-                  <Typography>{item.street}</Typography>
-                  <Typography>{item.houseNumber}</Typography>
+                  <Typography>{item?.street}</Typography>
+                  <Typography>{item?.houseNumber}</Typography>
 
                   </Box>
                 </Box>

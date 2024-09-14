@@ -8,31 +8,31 @@ export const userNavList = [
     {
         icon: <CiMemoPad/>,
         nameUZ: 'Buyurtmalarim',
-        nameRU: 'Moi zakazi',
+        nameRU: 'Мои заказы',
         link: '/my_orders'
     },
     {
         icon: <IoHomeOutline/>,
         nameUZ: 'Manzillar',
-        nameRU: 'Мои адреса',
+        nameRU: 'Адреса',
         link: '/my_addresses'
     },
     {
         icon: <CiStar/>,
         nameUZ: 'Status',
-        nameRU: 'Moi zakazi',
+        nameRU: 'Статус',
         link: '/my_status'
     },
     {
         icon: <CiCreditCard2/>,
         nameUZ: 'Kuponlarim',
-        nameRU: 'Moi zakazi',
+        nameRU: 'Мои купоны',
         link: '/coupons'
     },
     {
         icon: <CiHeart/>,
         nameUZ: 'Tanlanganlar',
-        nameRU: 'Moi zakazi',
+        nameRU: 'Избранное',
         link: '/favorite'
     },
     

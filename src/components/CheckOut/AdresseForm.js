@@ -19,7 +19,7 @@ function AdresseForm({
   const [street, setStreet] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
 
-  const { user } = useContext(MyContext);
+  const { user, isUzbek } = useContext(MyContext);
 
   const addNewAdress = async () => {
     const adress = {
@@ -49,7 +49,7 @@ function AdresseForm({
         >
           <Box>
             <Typography sx={{ color: "grey" }}>
-              Sizda mavjud manzillar soni: {addressCounter} ta
+              {isUzbek? "Sizda mavjud manzillar soni:" : "Сохранённые адреса:"} {addressCounter} 
             </Typography>
           </Box>
           <Button
@@ -58,7 +58,9 @@ function AdresseForm({
             onClick={() => setHasAdress(true)}
             color="success"
           >
-            Tanlash
+            {
+              isUzbek? "Tanlash" : "Выбрать"
+            }
           </Button>
         </Box>
       )}
@@ -75,7 +77,7 @@ function AdresseForm({
           <input
             style={{ backgroundColor: "inherit" }}
             type="text"
-            placeholder="Viloyat"
+            placeholder={isUzbek ? "Viloyat" : "Область"}
             readOnly
             value={region ? region.name : ""}
           />
@@ -100,7 +102,7 @@ function AdresseForm({
           <input
             style={{ backgroundColor: "inherit" }}
             type="text"
-            placeholder="Tuman"
+            placeholder={isUzbek ? "Tuman" : "Район"}
             readOnly
             value={district == "" ? "" : district.name}
           />
@@ -124,7 +126,7 @@ function AdresseForm({
           <input
             style={{ backgroundColor: "inherit" }}
             type="text"
-            placeholder="Pochta filiali"
+            placeholder={isUzbek? "Pochta filiali" : "Филиал почты"}
             readOnly
             value={
               postFilial == ""
@@ -136,7 +138,7 @@ function AdresseForm({
         <PostFilialDropDown district={district} setPostFilial={setPostFilial} />
       </Box>
 
-      <Box display={region.name !== "Toshkent Shaxri" ? "none" : "block"}>
+      <Box display={region.name !== "Toshkent shaxri" ? "none" : "block"}>
         <Grid container spacing={1}>
           <Grid item xs={8}>
             <Box display={"flex"} sx={{ border: "1px solid grey" }}>
@@ -149,12 +151,16 @@ function AdresseForm({
                 <input
                   style={{ backgroundColor: "inherit" }}
                   type="text"
-                  placeholder="Köcha nomi"
+                  placeholder={isUzbek ? "Ko'cha nomi" : "Улица"}
                   value={street}
                   onChange={(e) => setStreet(e.target.value)}
                 />
               </Box>
-              <Button size="small" sx={{ color: "white" }}>
+
+              <Button
+                size="small"
+                sx={{ color: "white", visibility: "hidden" }}
+              >
                 Street
               </Button>
             </Box>
@@ -173,7 +179,7 @@ function AdresseForm({
                 <input
                   style={{ backgroundColor: "inherit" }}
                   type="number"
-                  placeholder="Uy raqami"
+                  placeholder={isUzbek? "Uy raqami" : "Номер дома"}
                   value={houseNumber}
                   onChange={(e) => setHouseNumber(e.target.value)}
                 />
@@ -188,7 +194,9 @@ function AdresseForm({
 
       <Box sx={{ display: "flex", justifyContent: "center", marginTop: 2 }}>
         <Button variant="contained" size="small" onClick={addNewAdress}>
-          Manzilni saqlash
+         {
+          isUzbek? " Manzilni saqlash" : "Сохранить адрес"
+         }
         </Button>
       </Box>
     </Box>

@@ -14,7 +14,7 @@ function AddNewAddress({setHasNewAddress}) {
   const [houseNumber, setHouseNumber] = useState("");
   
 
-  const { user } = useContext(MyContext);
+  const { user, isUzbek } = useContext(MyContext);
 
   const addNewAdress = async () => {
     const adress = {
@@ -23,7 +23,7 @@ function AddNewAddress({setHasNewAddress}) {
       subRegionId: district.id,
       street: street,
       houseNumber: houseNumber,
-      postFilialId: postFilial.id,
+      postFilialId: postFilial?.id? postFilial.id : "",
     };
     const res = await addAddress(adress);
 
@@ -56,7 +56,7 @@ function AddNewAddress({setHasNewAddress}) {
           <input
             style={{ backgroundColor: "inherit" }}
             type="text"
-            placeholder="Viloyat"
+            placeholder={isUzbek ? "Viloyat" : "Область"}
             readOnly
             value={region ? region.name : ""}
           />
@@ -81,7 +81,7 @@ function AddNewAddress({setHasNewAddress}) {
           <input
             style={{ backgroundColor: "inherit" }}
             type="text"
-            placeholder="Tuman"
+            placeholder={isUzbek ? "Tuman" : "Район"}
             readOnly
             value={district == "" ? "" : district.name}
           />
@@ -105,7 +105,7 @@ function AddNewAddress({setHasNewAddress}) {
           <input
             style={{ backgroundColor: "inherit" }}
             type="text"
-            placeholder="Pochta filiali"
+            placeholder={isUzbek? "Pochta filiali" : "Филиал почты"}
             readOnly
             value={
               postFilial == ""
@@ -117,7 +117,7 @@ function AddNewAddress({setHasNewAddress}) {
         <PostFilialDropDown district={district} setPostFilial={setPostFilial} />
       </Box>
 
-      <Box display={region.name !== "Toshkent Shaxri" ? "none" : "block"}>
+      <Box display={region.name !== "Toshkent shaxri" ? "none" : "block"}>
         <Grid container spacing={1}>
           <Grid item xs={8}>
             <Box display={"flex"} sx={{ border: "1px solid grey" }}>
@@ -130,7 +130,7 @@ function AddNewAddress({setHasNewAddress}) {
                 <input
                   style={{ backgroundColor: "inherit" }}
                   type="text"
-                  placeholder="Köcha nomi"
+                  placeholder={isUzbek ? "Ko'cha nomi" : "Улица"}
                   value={street}
                   onChange={(e) => setStreet(e.target.value)}
                 />
@@ -154,7 +154,7 @@ function AddNewAddress({setHasNewAddress}) {
                 <input
                   style={{ backgroundColor: "inherit" }}
                   type="number"
-                  placeholder="Uy raqami"
+                  placeholder={isUzbek? "Uy raqami" : "Номер дома"}
                   value={houseNumber}
                   onChange={(e) => setHouseNumber(e.target.value)}
                 />
@@ -169,7 +169,9 @@ function AddNewAddress({setHasNewAddress}) {
 
       <Box sx={{ display: "flex", justifyContent: "center", marginTop: 2 }}>
         <Button variant="contained" size="small" onClick={addNewAdress}>
-          Manzilni saqlash
+          {
+            isUzbek ? "Manzilni saqlash" : "Сохранить адрес"
+          }
         </Button>
       </Box>
     </Box>

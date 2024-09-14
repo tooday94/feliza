@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Box, Grid, Typography, Button, Radio } from "@mui/material";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import MyContext from "../Context/MyContext";
 
 function AddressList({ adresseList, setHasAdress, setAddressId }) {
   const [value, setValue] = useState(
     adresseList && adresseList.length > 0 ? adresseList[0].id : null
   );
+  const {isUzbek} = useContext(MyContext)
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -58,14 +60,14 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
         </FormControl>
       </Box>
 
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box sx={{ display: "flex", flexDirection: 'column'}}>
         <Button
           variant="contained"
           size="small"
           sx={{ marginY: 1 }}
           onClick={() => setAddressId(value)}
         >
-          Shu manzilga yuborish
+          {isUzbek ? "Shu manzilga yuborish" : "Отправить на этот адрес"}
         </Button>
         <Button
           variant="outlined"
@@ -73,7 +75,7 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
           sx={{ marginY: 1 }}
           onClick={() => setHasAdress(false)}
         >
-          Yangi manzil qöshish
+          {isUzbek? "Yangi manzil qöshish" : "Добавить новый адрес"}
         </Button>
       </Box>
     </Box>

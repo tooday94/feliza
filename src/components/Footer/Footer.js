@@ -6,10 +6,11 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import MyContext from "../Context/MyContext";
+import { formatNumberWithSpaces } from "../Global/Functions";
 
 export default function Footer({ sum }) {
   const navigate = useNavigate();
-  const { setOrderItems, cardItems } = useContext(MyContext);
+  const { setOrderItems, cardItems, isUzbek } = useContext(MyContext);
 
   const navigateUser = () => {
     if (cardItems.length > 0) {
@@ -46,11 +47,13 @@ export default function Footer({ sum }) {
                 onClick={navigateUser}
                 size="small"
               >
-                Sotib olish
+                {
+                  isUzbek? "Sotib olish" : "Оформить заказ"
+                }
               </Button>
 
               <Typography sx={{ color: "black", ml: 2 }}>
-                Jami: {sum} so'm
+                {isUzbek ? "Jami:": "Сумма:"} {formatNumberWithSpaces(sum)} {isUzbek? "so'm" : "сум"}
               </Typography>
             </Box>
           </Toolbar>

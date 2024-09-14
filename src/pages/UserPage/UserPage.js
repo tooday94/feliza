@@ -11,7 +11,7 @@ import { getCustomerByID } from '../../api/Customer'
 
 function UserPage() {
 
-  const {user, setUser} = useContext(MyContext)
+  const {user, setUser, isUzbek} = useContext(MyContext)
   const [customer, setCustomer] = useState('')
   const navigate = useNavigate()
   
@@ -50,7 +50,9 @@ function UserPage() {
       
         <Box  sx={{width: '100%', marginTop: 10}}>
             <Typography variant='h5' sx={{marginBottom: 2, textAlign: 'center'}}>
-               Meing profilim
+              {
+                isUzbek?  "Meing profilim" : "Мой профиль"
+              }
             </Typography>
             <Box sx={{backgroundColor: 'beige', paddingY: 3}} align={'center'}>
 
@@ -78,12 +80,12 @@ function UserPage() {
                     return(
                       <Box key={item.nameUZ} marginBottom={1} onClick= {() => navigate(item.link)} sx={{cursor: 'pointer'}}>
                         <Grid container >
-                          <Grid item xs={1} sx = {{fontSize: '22px'}}>
+                          <Grid item xs={1} sx = {{fontSize: '22px'}} display={'flex'} justifyContent={'center'}>
                             {item.icon}
                           </Grid>
                           <Grid item xs = {10}>
                             <Typography >
-                               {item.nameUZ}
+                               {isUzbek? item?.nameUZ : item?.nameRU}
                             </Typography>
                           </Grid>
                         </Grid>
@@ -93,7 +95,9 @@ function UserPage() {
                 }
               </Box>
               <Button variant='contained' onClick={logOut} fullWidth>
-                Chiqish
+                {
+                  isUzbek ? "Chiqish" : "Выйти"
+                }
               </Button>
             </Box>
         </Box>

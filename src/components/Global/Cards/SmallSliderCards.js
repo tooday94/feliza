@@ -10,8 +10,10 @@ import { Box, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import MyContext from "../../Context/MyContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { formatNumberWithSpaces, truncateText } from "../Functions";
 
 export default function SmallSliderCards({ item }) {
+  const {isUzbek} = useContext(MyContext)
   const isSale = item.sale > 0;
 
   return (
@@ -25,25 +27,28 @@ export default function SmallSliderCards({ item }) {
         <Box display="flex" justifyContent="space-between">
           <Link to={`/product/${item.id}`}>
             <Typography gutterBottom fontSize={14} component="div">
-              {item.nameUZB}
+              {isUzbek ? truncateText(item.nameUZB) : truncateText(item.nameRUS)}
             </Typography>
           </Link>
         </Box>
 
-        <Typography
-          fontSize={12}
-          sx={{
-            textDecoration: isSale ? "line-through" : "none",
-            color: isSale ? "grey" : "black",
-          }}
-        >
-          {item.sellPrice} so'm
-        </Typography>
-        {isSale && (
-          <Typography fontSize={12} sx={{ color: "red" }}>
-            {item.salePrice} so'm
+        <Box display={"flex"} gap={1} alignItems={"center"}>
+          {isSale && (
+            <Typography fontSize={14} sx={{ color: "red" }}>
+              {formatNumberWithSpaces(item.salePrice)}{" "}
+              {isUzbek ? "so'm" : "сум"}
+            </Typography>
+          )}
+          <Typography
+            fontSize={12}
+            sx={{
+              textDecoration: isSale ? "line-through" : "none",
+              color: isSale ? "grey" : "black",
+            }}
+          >
+            {formatNumberWithSpaces(item.sellPrice)} {isUzbek ? "so'm" : "сум"}
           </Typography>
-        )}
+        </Box>
       </CardContent>
     </Card>
   );

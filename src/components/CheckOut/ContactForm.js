@@ -11,8 +11,7 @@ const ContactForm = ({
   fullName,
   phoneNumber,
 }) => {
-  const [customer, setCustomer] = useState("");
-  const { user } = useContext(MyContext);
+  const { user, isUzbek } = useContext(MyContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +37,7 @@ const ContactForm = ({
       <TextField
         variant="outlined"
         size="small"
-        label="Ism va familiyangiz"
+        label={isUzbek? "Ism va familiyangiz" : "Ваше имя и фамилия"}
         fullWidth
         value={fullName ? fullName : ""}
         onChange={(e) => setFullName(e.target.value)}
@@ -47,7 +46,7 @@ const ContactForm = ({
         sx={{ marginTop: 2 }}
         variant="outlined"
         size="small"
-        label="Telefon raqamingiz"
+        label={isUzbek? "Telefon raqamingiz" : "Ваш номер телефона"}
         fullWidth
         //defaultValue={user? user.name: ''}
         value={phoneNumber}

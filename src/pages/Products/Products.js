@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Button, Drawer, Grid, Typography, Pagination } from "@mui/material";
 import { useParams } from "react-router-dom";
 import ProductCard from "../../components/Global/Cards/ProductCard";
@@ -14,6 +14,7 @@ import SortMenuButton from "../../components/Products/FilterDetailes/SortMenuBut
 import FilterDetailes from "../../components/Products/FilterDetailes/FilterDetailes";
 import { getCategoryById } from "../../api/Category";
 import { useLocation } from "react-router-dom";
+import MyContext from "../../components/Context/MyContext";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -30,8 +31,9 @@ function Products() {
   const [prevScrollY, setPrevScrollY] = useState(0);
   const [sortType, setSortType] = useState(null);
   const location = useLocation();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1)
+  const {isUzbek} = useContext(MyContext)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -147,7 +149,7 @@ function Products() {
           />
 
           <Box display={"flex"} alignItems={"center"}>
-            <Typography sx={{}}>{category?.object?.nameUZB}</Typography>
+            <Typography >{isUzbek? category?.object?.nameUZB : category?.object?.nameRUS}</Typography>
           </Box>
           <Button
             startIcon={<TuneIcon />}

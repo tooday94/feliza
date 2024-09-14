@@ -84,7 +84,9 @@ function MobileContainer({handelLikeList, item, isSale,
                     </Box>
 
                     <Button fullWidth variant='contained' sx={{mr: 2, backgroundColor: 'black'}} onClick={handelClick}>
-                      Savatchaga
+                      {
+                        isUzbek ? "Savatchaga" : "В корзину"
+                      }
                     </Button>
                   </Box>
                   <Box  sx={{ mb: 2}}>

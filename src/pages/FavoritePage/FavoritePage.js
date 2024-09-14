@@ -10,7 +10,7 @@ import { getLikedItems } from "../../api/LikedList";
 function FavoritePage() {
   const { likedList } = useContext(MyContext);
   const [list, setList] = useState([]);
-  const { user } = useContext(MyContext);
+  const { user, isUzbek } = useContext(MyContext);
 
   useEffect(() => {
     setList(likedList.map((item) => item.product));
@@ -35,7 +35,7 @@ function FavoritePage() {
       </Box>
 
       {likedList.length == 0 && (
-        <Box marginTop={12}>
+        <Box marginTop={12} marginBottom={12}>
           <Grid
             container
             spacing={2}
@@ -48,7 +48,9 @@ function FavoritePage() {
                 <img src={boxIcon} alt="" />
               </Box>
               <Typography>
-                Sizda hozircha saralangan mahsulotlar röyxati mavjud emas
+                {
+                  isUzbek ? "Sizda hozircha saralangan mahsulotlar ro'yxati mavjud emas" : "У вас пока нет избранных товаров"
+                }
               </Typography>
             </Grid>
           </Grid>

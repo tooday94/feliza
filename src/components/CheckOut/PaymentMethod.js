@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -7,8 +7,10 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import paymentIcon from "../../assets/icons/payment.png";
 import MediumIcon from "../Global/Icons/MediumIcon";
+import MyContext from "../Context/MyContext";
 
 function PaymentMethod({ setPayment, payment }) {
+  const {isUzbek} = useContext(MyContext)
   const handleGenderChange = (event) => {
     setPayment(event.target.value);
   };
@@ -33,7 +35,7 @@ function PaymentMethod({ setPayment, payment }) {
             control={<Radio />}
             label="Payme"
           />
-          <FormControlLabel value="cash" control={<Radio />} label="Naqd pul" />
+          <FormControlLabel value="cash" control={<Radio />} label={isUzbek ? "Naqd pul" : "Наличные"} />
         </RadioGroup>
       </FormControl>
     </Box>

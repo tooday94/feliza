@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import MyContext from '../Context/MyContext'
 
 function ProductDrawer({setIsDrawerOpen, isDrawerOpen, item, addProductToBasket}) {
-  const {setRefreshCard} = useContext(MyContext)
+  const {setRefreshCard, isUzbek} = useContext(MyContext)
 
   const handleClick = (id) => {
     addProductToBasket(id)
@@ -22,7 +22,9 @@ function ProductDrawer({setIsDrawerOpen, isDrawerOpen, item, addProductToBasket}
           <Box align= 'center'>
             
           <Typography  variant='h5' marginTop={3}>
-            O'lchamni tanlang
+            {
+              isUzbek? "O'lchamni tanlang" : "Выберите размер"
+            }
           </Typography>
 
           
@@ -44,7 +46,9 @@ function ProductDrawer({setIsDrawerOpen, isDrawerOpen, item, addProductToBasket}
                     {
                       !isActive && <Box>
                             <Typography>
-                              Sotuvda mavjud emas
+                              {
+                                isUzbek? "Sotuvda mavjud emas" : "Не доступно в продаже"
+                              }
                             </Typography>
                          </Box>
                     }
