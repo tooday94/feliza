@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -9,12 +9,14 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import { getAllRegions } from "../../api/CheckOut";
+import MyContext from "../Context/MyContext";
 
 function MainDropdown({ setRegion, setDistrict, setPostFilial }) {
   const [options, setOptions] = useState([]);
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const [selectedIndex, setSelectedIndex] = useState(1);
+  const {isUzbek} = useContext(MyContext)
 
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -88,11 +90,11 @@ function MainDropdown({ setRegion, setDistrict, setPostFilial }) {
                 <MenuList id="split-button-menu" autoFocusItem>
                   {options.map((option, index) => (
                     <MenuItem
-                      key={option.name}
+                      key={option.nameUZB}
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
-                      {option.name}
+                      {isUzbek? option.nameUZB : option.nameRUS}
                     </MenuItem>
                   ))}
                 </MenuList>

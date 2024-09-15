@@ -161,12 +161,16 @@ function App() {
       const res = await getCartItemsByCustomerId(user.customerId);
       if (res.success) {
         setCardItems(res.data);
+      } else {
+        setCardItems([])
       }
     };
     if (user) {
       fetchData();
+    }else {
+      setCardItems([])
     }
-  }, [refreshCard]);
+  }, [refreshCard, user]);
 
   const theme = createTheme({
     palette: {

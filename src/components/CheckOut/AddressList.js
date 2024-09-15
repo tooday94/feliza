@@ -9,11 +9,14 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
   const [value, setValue] = useState(
     adresseList && adresseList.length > 0 ? adresseList[0].id : null
   );
-  const {isUzbek} = useContext(MyContext)
+  const { isUzbek } = useContext(MyContext);
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
+  console.log(adresseList);
+  
 
   return (
     <Box sx={{ marginTop: 2, width: "100%" }}>
@@ -45,8 +48,12 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
                     >
                       <Grid item xs={10}>
                         <Typography>
-                          {idx + 1}. {item.region.name}, {item.subRegion.name},{" "}
-                          {item.street}, {item.houseNumber}
+                          {idx + 1}.{" "}
+                          {isUzbek ? item.region.nameUZB : item.region.nameRUS},{" "}
+                          {isUzbek
+                            ? item.subRegion.nameUZB
+                            : item.subRegion.nameRUS}
+                          , {item.street !== "" ?isUzbek ?item.streetUZB + " " : item.streetRUS : item.postFilial.postFilialName}  {item.houseNumber}
                         </Typography>
                       </Grid>
                       <Grid item xs={2} display={"flex"} justifyContent={"end"}>
@@ -60,7 +67,7 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
         </FormControl>
       </Box>
 
-      <Box sx={{ display: "flex", flexDirection: 'column'}}>
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
         <Button
           variant="contained"
           size="small"
@@ -75,7 +82,7 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
           sx={{ marginY: 1 }}
           onClick={() => setHasAdress(false)}
         >
-          {isUzbek? "Yangi manzil qöshish" : "Добавить новый адрес"}
+          {isUzbek ? "Yangi manzil qöshish" : "Добавить новый адрес"}
         </Button>
       </Box>
     </Box>

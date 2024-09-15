@@ -34,8 +34,8 @@ function MyAddresses() {
             <Grid key={item.id} item xs={11} md={6} lg={4}>
               <Card sx={{ padding: 1, marginY: 1, display: 'flex', justifyContent: 'space-between'}}>
                 <Box>
-                  <Typography>{item.region.name}</Typography>
-                  <Typography>{item.subRegion.name}</Typography>
+                  <Typography>{isUzbek? item.region.nameUZB : item.region.nameRUS}</Typography>
+                  <Typography>{isUzbek? item.subRegion.nameUZB : item.subRegion.nameRUS}</Typography>
                   <Typography>{item?.postFilial?.postFilialName}</Typography>
                   <Box display={"flex"} gap={1}>
                   <Typography>{item?.street}</Typography>

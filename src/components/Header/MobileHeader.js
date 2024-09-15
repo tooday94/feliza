@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, IconButton, Toolbar, Badge, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
@@ -16,6 +16,11 @@ function MobileHeader({
   navigateUserToBasket,
 }) {
   const { cardItems } = useContext(MyContext);
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    setIndex(cardItems.length)
+  }, [cardItems])
   return (
     <Box>
       <Toolbar
@@ -59,14 +64,14 @@ function MobileHeader({
                 backgroundColor: "black",
                 width: "11px",
                 height: "11px",
-                display: cardItems.length == 0 ? "none" : "flex",
+                display: index == 0 ? "none" : "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 borderRadius: "50%",
               }}
             >
               <Typography sx={{ fontSize: 8, color: "white" }}>
-                {cardItems.length}
+                {index}
               </Typography>
             </Box>
           </Box>

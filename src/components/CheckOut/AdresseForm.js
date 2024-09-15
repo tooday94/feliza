@@ -79,7 +79,7 @@ function AdresseForm({
             type="text"
             placeholder={isUzbek ? "Viloyat" : "Область"}
             readOnly
-            value={region ? region.name : ""}
+            value={region ? isUzbek? region.nameUZB: region.nameRUS : ""}
           />
         </Box>
         <MainDropdown
@@ -104,7 +104,7 @@ function AdresseForm({
             type="text"
             placeholder={isUzbek ? "Tuman" : "Район"}
             readOnly
-            value={district == "" ? "" : district.name}
+            value={district == "" ? "" : isUzbek? district.nameUZB : district.nameRUS}
           />
         </Box>
         <SubRegionDropDown
@@ -114,7 +114,7 @@ function AdresseForm({
         />
       </Box>
       <Box
-        display={region.name !== "Toshkent shaxri" ? "flex" : "none"}
+        display={region.nameUZB !== "Toshkent shaxri" ? "flex" : "none"}
         sx={{ border: "1px solid grey", marginY: 2, borderRadius: "5px" }}
       >
         <Box
@@ -138,7 +138,7 @@ function AdresseForm({
         <PostFilialDropDown district={district} setPostFilial={setPostFilial} />
       </Box>
 
-      <Box display={region.name !== "Toshkent shaxri" ? "none" : "block"}>
+      <Box display={region.nameUZB !== "Toshkent shaxri" ? "none" : "block"}>
         <Grid container spacing={1}>
           <Grid item xs={8}>
             <Box display={"flex"} sx={{ border: "1px solid grey" }}>

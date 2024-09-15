@@ -20,7 +20,11 @@ function PaymentMethod({ setPayment, payment }) {
         {/* <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel> */}
         <Box display={"flex"} alignItems={"center"}>
           <MediumIcon icon={paymentIcon} />
-          <Typography sx={{ marginLeft: 1 }}>Tölov turi</Typography>
+          <Typography sx={{ marginLeft: 1 }}>
+            {
+              isUzbek? "To'lov turi" : "Тип оплаты"
+            }
+          </Typography>
         </Box>
         <RadioGroup
           row
