@@ -45,4 +45,24 @@ const getAdressByCustomer = async (id) => {
     }
 }
 
-export {addAddress, getAdressByCustomer}
+const deleteAdress = async (id) => {
+    try {
+        const token = localStorage.getItem('token');
+        console.log(token);
+        const res = await axios.delete(baseURL + 'deleteAddress/' + id, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+        });
+        if(res.status == 200) {
+            return {success: true, data: res.data}
+        }else {
+            return {success: false}
+        }
+    } catch (error) {
+        return {success: false}
+    }
+}
+
+export {addAddress, getAdressByCustomer, deleteAdress}

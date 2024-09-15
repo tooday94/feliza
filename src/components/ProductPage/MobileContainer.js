@@ -15,7 +15,7 @@ function MobileContainer({handelLikeList, item, isSale,
     const {isUzbek} = useContext(MyContext)
     const SliderContainer = styled(Box)({
         width: '100%',
-        height: '60vh',
+        height: '75vh',
         position: 'relative'
       })
 

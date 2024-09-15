@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import { Drawer, styled } from "@mui/material";
+import { Divider, Drawer, styled } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Menu from "../../pages/Menu/Menu";
@@ -129,7 +129,7 @@ export default function HomePageHeader() {
               </Button>
 
               {/* <Switch  defaultChecked  onChange={() => setIsUzbek(prev => !prev)}/> */}
-              <Box display={"flex"} gap={1} paddingRight={2}>
+              {/* <Box display={"flex"} gap={1} paddingRight={2}>
                 <Typography
                   sx={{ textDecoration: isUzbek ? "underline" : "none" }}
                   onClick={() => {
@@ -150,7 +150,41 @@ export default function HomePageHeader() {
                 >
                   Рус
                 </Typography>
-              </Box>
+              </Box> */}
+
+              <Box display={"flex"} alignItems={"center"} marginRight={2}>
+                  <Typography
+                    sx={{
+                      backgroundColor: isUzbek ? "rgb(234, 87, 116)" : "#ffffff",
+                      color: isUzbek ? "white" : "#003049",
+                      paddingX: 1,
+                      borderRadius: "5px",
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => setIsUzbek(true)}
+                  >
+                    O'z
+                  </Typography>
+
+                  <Divider
+                    orientation="vertical"
+                    flexItem
+                    sx={{ marginX: 1 }}
+                  />
+
+                  <Typography
+                    sx={{
+                      backgroundColor: isUzbek ? "#ffffff" : "rgb(234, 87, 116)",
+                      color: isUzbek ? "#003049" : "white",
+                      paddingX: 1,
+                      borderRadius: "5px",
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => setIsUzbek(false)}
+                  >
+                    Ру
+                  </Typography>
+                </Box>
             </Box>
             <Menu setIsDrawerOpen={setIsDrawerOpen} />
           </Box>

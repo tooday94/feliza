@@ -1,7 +1,7 @@
 import { Box, Card, Grid, IconButton, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import MyContext from "../Context/MyContext";
-import { getAdressByCustomer } from "../../api/Adress";
+import { deleteAdress, getAdressByCustomer } from "../../api/Adress";
 import AddNewAddress from "./AddNewAddress";
 import { Delete } from "@mui/icons-material";
 
@@ -9,6 +9,7 @@ function MyAddresses() {
   const { user, isUzbek } = useContext(MyContext);
   const [list, setList] = useState([]);
   const [hasNewAddress, setHasNewAddress] = useState(0);
+  const [refreshList, setRefreshList] = useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +21,14 @@ function MyAddresses() {
       }
     };
     fetchData();
-  }, [hasNewAddress]);
+  }, [hasNewAddress, refreshList]);
+
+  const deleteAddressByiD = async(id) => {
+    const res = await deleteAdress(id);
+    if(res?.success) {
+      setRefreshList(prev => prev + 1 )
+    }
+  } 
 
   return (
     <Box marginTop={9}>
@@ -44,7 +52,7 @@ function MyAddresses() {
                   </Box>
                 </Box>
                 <Box>
-                    <IconButton>
+                    <IconButton onClick={() => deleteAddressByiD(item.id)}>
                        <Delete/>
                     </IconButton>
                 </Box>
