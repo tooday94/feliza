@@ -25,7 +25,7 @@ const getCustomerByID = async(id) => {
 const getCouponsCustomerByID = async(id) => {
     try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://felizabackend.uz/api/couponCustomer/getCouponsByCustomerId/' + id, {
+        const res = await axios.get('https://felizabackend.uz/api/couponCustomer/getCouponsByCustomerId/' + id, {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`

@@ -15,12 +15,12 @@ function MobileHeader({
   navigateUserToFovoritePage,
   navigateUserToBasket,
 }) {
-  const { cardItems } = useContext(MyContext);
+  const { cardItems, refreshCard } = useContext(MyContext);
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
     setIndex(cardItems.length)
-  }, [cardItems])
+  }, [cardItems, refreshCard])
   return (
     <Box>
       <Toolbar

@@ -12,6 +12,9 @@ import MyContext from '../../components/Context/MyContext'
 import AddressList from '../../components/CheckOut/AddressList'
 import SelectedAddress from '../../components/CheckOut/SelectedAddress'
 import { addOrder } from '../../api/Order'
+import CouponContainer from '../../components/CheckOut/CouponContainer'
+import { getCouponsCustomerByID } from '../../api/Customer'
+
 
 
 function CheckOut() {
@@ -25,6 +28,9 @@ function CheckOut() {
   const [addressId, setAddressId] = useState(0)
   const [newAddress, setNewAddress] = useState(0)
   const [errorList, setErrorList] = useState([])
+  const [couponList, setCouponList] = useState([])
+  const [couponId, setCouponId] = useState(null)
+
 
 
   
@@ -33,13 +39,26 @@ function CheckOut() {
     const fetchData = async () => {
       console.log(user);
       const res = await getAdressByCustomer(user.customerId)
-      if(res.success) {
+      if(res?.success) {
         console.log(res.data);
         setAdresseList(res.data);
       }
     }
     fetchData();
   }, [newAddress])
+
+
+  useEffect(() => {
+    const fetchData = async() => {
+        const res = await getCouponsCustomerByID(user.customerId)
+        if(res?.success) {
+            console.log(res.data);
+            setCouponList(res.data)
+        }
+    }
+
+    fetchData();
+  }, [])
 
   useEffect(() => {
     if(adresseList.length >= 1) {
@@ -129,6 +148,8 @@ function CheckOut() {
 
 
               <ContactForm setFullName = {setFullName} setPhoneNumber={setPhoneNumber} fullName = {fullName} phoneNumber = {phoneNumber}/>
+
+              <CouponContainer list={couponList}/>
 
               <PaymentMethod setPayment = {setPayment} payment={payment}/>
 
