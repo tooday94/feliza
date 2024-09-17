@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getOrdersById } from "../../api/Order";
@@ -6,11 +6,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import OrderContactInfo from "../../components/Order/OrderContactInfo";
 import StatusIcons from "../../components/Order/StatusIcons";
+import MyContext from "../../components/Context/MyContext";
+import { formatNumberWithSpaces } from "../../components/Global/Functions";
 
 function Order() {
   const [order, setOrder] = useState("");
   const { id } = useParams();
-  const [test, setTest] = useState('');
+  const {isUzbek} = useContext(MyContext)
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,17 +31,26 @@ function Order() {
 
       
         <Typography fontSize={12} textAlign={"center"} fontWeight={'bold'}>
-          Buyurtma qilingan mahsulotlar
+          {
+            isUzbek? "Buyurtma qilingan mahsulotlar" : "Заказанные товары"
+          }
         </Typography>
         <Box sx={{marginX: 1, paddingX: 1, borderLeft: '1px solid grey', paddingBottom: 1}}>
         <Box display={"flex"} justifyContent={"space-between"} sx={{borderBottom: '1px solid #bdbdbd', marginTop: 4, paddingBottom: 1}}>
             <Typography fontSize={12}>
-                Status
+                {
+                  isUzbek? "Status" : "Статус"
+                }
             </Typography>
             <Typography fontSize={12} sx={{color: 'brown'}}>
                 {
-                    order.orderStatusType == 'NEW' ? 'Buyurtma berildi' : (order.orderStatusType == 'Pack' ? 'Tayyorlandi' : 
-                    (order.orderStatusType == 'SEND' ? 'Yuborildi' : 'Bekor qilindi'))
+                    isUzbek ? 
+                    (order.orderStatusType == 'NEW' ? 'Buyurtma berildi' : 
+                     (order.orderStatusType == 'Pack' ? 'Tayyorlandi' : 
+                     (order.orderStatusType == 'SEND' ? 'Yuborildi' : 'Bekor qilindi'))) :
+                    (order.orderStatusType == 'NEW' ? 'Заказ оформлен' : 
+                     (order.orderStatusType == 'Pack' ? 'Подготовлен' : 
+                     (order.orderStatusType == 'SEND' ? 'Отправлен' : 'Отменен')))
                 }
             </Typography>
         </Box>
@@ -47,7 +59,9 @@ function Order() {
          
          <Box  sx={{borderBottom: '1px solid #bdbdbd', paddingY: '5px'}}>
              <Typography fontSize={12}>
-               Mahsulotlar
+               {
+                isUzbek? "Mahsulotlar" : "Товары"
+               }
              </Typography>
          </Box>
 
@@ -71,19 +85,23 @@ function Order() {
 
                         <Box>
                           <Typography fontSize={12} sx={{color: 'grey'}}>
-                            Narxi:
+                            {
+                              isUzbek? "Narxi:" : "Цена:"
+                            }
                           </Typography>
                           <Typography fontSize={12}>
                             {
-                              item?.productCost
-                            } so'm
+                              formatNumberWithSpaces(item?.productCost)
+                            } {isUzbek? " so'm" : ' сум'}
                           </Typography>
                         </Box>
 
                         <Box>
                         <Box display={"flex"} gap={1}>
                           <Typography fontSize={12} sx={{color: 'grey'}}>
-                            O'lchami:
+                            {
+                              isUzbek? "O'lchami:" : "Размер:"
+                            }
                           </Typography>
                           <Typography fontSize={12}>
                             {
@@ -94,7 +112,9 @@ function Order() {
                         </Box>
                         <Box display={"flex"} gap={1}>
                           <Typography fontSize={12} sx={{color: 'grey'}}>
-                            Soni:
+                            {
+                              isUzbek? "Soni:" : "Количество:"
+                            }
                           </Typography>
                           <Typography fontSize={12}>
                             {

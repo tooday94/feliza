@@ -53,7 +53,7 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
                           {isUzbek
                             ? item.subRegion.nameUZB
                             : item.subRegion.nameRUS}
-                          , {item.street !== "" ?isUzbek ?item.streetUZB + " " : item.streetRUS : item.postFilial.postFilialName}  {item.houseNumber}
+                          , {item.street !== "" ?isUzbek ?item.streetUZB + " " : item.streetRUS : item.postFilial?.postFilialName}  {item.houseNumber}
                         </Typography>
                       </Grid>
                       <Grid item xs={2} display={"flex"} justifyContent={"end"}>

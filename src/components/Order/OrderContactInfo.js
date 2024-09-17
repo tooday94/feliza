@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Box, Grid, Typography} from '@mui/material'
+import MyContext from '../Context/MyContext'
 
 function OrderContactInfo({order}) {
+  const {isUzbek} = useContext(MyContext)
   return (
     <Box sx={{ paddingX: 2 }}>
         <Grid
@@ -14,16 +16,18 @@ function OrderContactInfo({order}) {
         >
           <Grid item xs={6}>
             <Typography fontSize={14} fontWeight={"bold"}>
-              Yetkazish manzili:
+              {
+                isUzbek? "Yetkazish manzili:" : "Адрес доставки:"
+              }
             </Typography>
             <Typography fontSize={12} sx={{ color: "#616161" }}>
               {order?.receiverName}
             </Typography>
             <Typography fontSize={12} sx={{ color: "#616161" }}>
-              {order?.address?.region?.name}
+              {isUzbek? order?.address?.region?.nameUZB : order?.address?.region?.nameRUS}
             </Typography>
             <Typography fontSize={12} sx={{ color: "#616161" }}>
-              {order?.address?.subRegion?.name}
+            {isUzbek? order?.address?.subRegion?.nameUZB : order?.address?.subRegion?.nameRUS}
             </Typography>
 
             <Box display={"flex"} gap={1}>
@@ -37,7 +41,9 @@ function OrderContactInfo({order}) {
           </Grid>
           <Grid item xs={6}>
             <Typography fontSize={14} fontWeight={"bold"}>
-              To'lov turi:
+              {
+                isUzbek? "To'lov turi:" : "Тип оплаты"
+              }
             </Typography>
 
             <Typography fontSize={12} sx={{ color: "#616161" }}>
@@ -45,13 +51,19 @@ function OrderContactInfo({order}) {
             </Typography>
 
             <Typography fontSize={14} fontWeight={"bold"} marginTop={2}>
-              Yetkazish turi:
+             {
+              isUzbek? "Yetkazish turi:" : "Тип доставки:"
+             }
             </Typography>
 
             <Typography fontSize={12} sx={{ color: "#616161" }}>
-              {order?.address?.region?.name == "Toshkent shaxri"
+              {
+                isUzbek? order?.address?.region?.name == "Toshkent shaxri"
                 ? "Kurier orqali"
-                : "Pochta xizmati"}
+                : "Pochta xizmati": order?.address?.region?.name == "Toshkent shaxri"
+                ? "Через курьера"
+                : "Почтовая служба"
+              }
             </Typography>
           </Grid>
         </Grid>
