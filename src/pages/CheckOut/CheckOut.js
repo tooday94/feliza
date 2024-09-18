@@ -14,6 +14,7 @@ import SelectedAddress from "../../components/CheckOut/SelectedAddress";
 import { addOrder } from "../../api/Order";
 import CouponContainer from "../../components/CheckOut/CouponContainer";
 import { getCouponsCustomerByID } from "../../api/Customer";
+import PriceContainer from '../../components/CheckOut/PriceContainer'
 
 function CheckOut() {
   const [adresseList, setAdresseList] = useState([]);
@@ -59,7 +60,11 @@ function CheckOut() {
     const couponPrice = coupon? coupon.coupon.credit : 0
     setQuantity(totalQuantity);
     setPriceWithoutCoupon(tempPrice)
-    setPrice(tempPrice- couponPrice)
+    if(priceWithoutCoupon - couponPrice > 10000) {
+      setPrice(tempPrice- couponPrice)
+    }else {
+      setPrice(tempPrice)
+    }
   }, [cardItems, coupon]);
 
   useEffect(() => {
@@ -79,6 +84,17 @@ function CheckOut() {
       setHasAdress(true);
     }
   }, [adresseList]);
+
+  const handleCoupon = (coupon) => {
+    const couponPrice = coupon? coupon.coupon.credit : 0
+    if((priceWithoutCoupon - couponPrice) > 10000) {
+      setCoupon(coupon)
+    } else {
+      const InfoUZB = `Bu kupondan foydalanish uchun harid miqdori ${priceWithoutCoupon + 10000} so'm dan kam bo'lmasligi kerak`
+      const InfoRUS = `Чтобы использовать этот купон, сумма покупки должна составлять не менее ${priceWithoutCoupon + 10000} сум`
+      alert(isUzbek? InfoUZB : InfoRUS)
+    }
+  }
 
   const createOrder = () => {
     setErrorList([]);
@@ -174,97 +190,13 @@ function CheckOut() {
             <CouponContainer
               list={couponList}
               coupon={coupon}
-              setCoupon={setCoupon}
+              setCoupon={handleCoupon}
+              
             />
 
             <PaymentMethod setPayment={setPayment} payment={payment} />
 
-            <Box>
-              <Divider sx={{ marginY: 2 }} />
-              <Box display={"flex"} justifyContent={"space-between"}>
-                <Box display={"flex"} gap={1}>
-                  <Typography>{quantity}</Typography>
-                  <Typography variant="subtitle2">
-                    {isUzbek ? " ta mahsulot" : "товара:"}
-                  </Typography>
-                </Box>
-                <Box sx={{display: 'flex'}} gap={1}>
-                <Typography variant="subtitle2">
-                  {
-                    priceWithoutCoupon
-                    
-                  }
-                </Typography>
-                <Typography variant="subtitle2">
-                  {
-                    isUzbek? "so'm" : "сум"
-                  }
-                </Typography>
-                </Box>
-              </Box>
-
-              <Box display={"flex"} justifyContent={"space-between"}>
-                <Typography variant="subtitle2">
-                  {
-                    isUzbek? "Yetkazish narhi:" : "Стоимость доставки:"
-                  }
-                </Typography>
-                <Box sx={{display: 'flex'}} gap={1}>
-                <Typography variant="subtitle2">
-                  0
-                </Typography>
-                <Typography variant="subtitle2">
-                  {
-                    isUzbek? "so'm" : "сум"
-                  }
-                </Typography>
-
-                
-                </Box>
-              </Box>
-
-              <Box display={"flex"} justifyContent={"space-between"}>
-                <Typography variant="subtitle2">
-                  {
-                    isUzbek? "Kupon:" : "Купон:"
-                  }
-                </Typography>
-                <Box sx={{display: 'flex'}} gap={1}>
-                {
-                  coupon? (<Typography variant="subtitle2">
-                    -{coupon?.coupon?.credit}
-                  </Typography>) : (<Typography variant="subtitle2">0</Typography>)
-                }
-                <Typography variant="subtitle2">
-                  {
-                    isUzbek? "so'm" : "сум"
-                  }
-                </Typography>
-
-                
-                </Box>
-              </Box>
-
-              <Box display={"flex"} justifyContent={"space-between"}>
-                <Typography variant="subtitle2">
-                  {
-                    isUzbek? "To'lov miqdori:" : "Сумма платежа:"
-                  }
-                </Typography>
-                <Box sx={{display: 'flex'}} gap={1}>
-                <Typography variant="subtitle2">
-                  {price}
-                </Typography>
-                <Typography variant="subtitle2">
-                  {
-                    isUzbek? "so'm" : "сум"
-                  }
-                </Typography>
-
-                
-                </Box>
-              </Box>
-            </Box>
+            <PriceContainer quantity={quantity} priceWithoutCoupon={priceWithoutCoupon} coupon={coupon} price={price}/>
 
             <Box sx={{ display: "flex", justifyContent: "end" }}>
               <Button
