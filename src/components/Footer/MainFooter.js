@@ -33,7 +33,7 @@ function MainFooter() {
   };
 
   return (
-    <Box marginTop={5} sx={{ boxShadow: "inset 0 0.5px 0 black" }}>
+    <Box marginTop={5} sx={{ boxShadow: "inset 0 0.5px 0 black" }} paddingTop={1}>
       <Box sx={{display: user === null ? 'block' : 'none'}}>
       <Box align={"center"} padding={2} >
         <Typography fontWeight={2}>
@@ -69,7 +69,7 @@ function MainFooter() {
         </Grid>
       </Grid>
       </Box>
-      <Box align={"center"} marginTop={3} paddingX={2}>
+      <Box align={"center"} sx={{marginTop: 2}} paddingX={2}>
         {footerNavList.map((item, idx) => {
           return (
             <Box

@@ -2,10 +2,11 @@ import { Box, Grid, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import couponIcon from "../../assets/icons/coupon-icon.png";
 import couponImg from "../../assets/images/coupon-image.png";
+import checkedIcon from "../../assets/images/checked.png"
 import MyContext from "../Context/MyContext";
 import MediumIcon from "../Global/Icons/MediumIcon";
 
-function CouponContainer({ list }) {
+function CouponContainer({ list, coupon, setCoupon }) {
   const { isUzbek } = useContext(MyContext);
   console.log(list);
   
@@ -14,7 +15,7 @@ function CouponContainer({ list }) {
       <Box display={"flex"} alignItems={"center"} marginBottom={1}>
         <MediumIcon icon={couponIcon} />
         <Typography sx={{ marginLeft: 1 }}>
-          {isUzbek ? "Kuponlar" : "Купоны"}
+          {isUzbek ? "Sizdagi mavjud kuponlar" : "Ваши купоны"}
         </Typography>
       </Box>
       <Box>
@@ -35,8 +36,11 @@ function CouponContainer({ list }) {
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      border: item.id == coupon?.id? "2px solid black" : "2px solid white",
+                    
                     }}
+                    onClick={() => setCoupon(item)}
                   >
                     <Box textAlign={'center'}>
                         <Typography sx={{color: 'white', fontWeight: 'bold', fontSize: '20px'}} >
@@ -48,7 +52,9 @@ function CouponContainer({ list }) {
                         {/* sx={{display :item.expireDate? 'flex' : 'none' }} */}
                         <Box  gap={1} sx={{color: 'white'}}>
                             <Typography fontSize={11} >
-                              Amal qilish muddati:
+                              {
+                                isUzbek? "Amal qilish muddati:" : "Срок действия:"
+                              }
                             </Typography>
                             <Typography fontSize={11}>
                               {item.expireDate}
@@ -56,6 +62,11 @@ function CouponContainer({ list }) {
                         </Box>
                     </Box>
                   </Box>
+                </Grid>
+                <Grid item xs={4} display={"flex"} justifyContent={'end'} alignItems={"center"}>
+                    <Box sx={{width: '30%', display: item.id==coupon?.id? 'block' : 'none'}}>
+                        <img src={checkedIcon} alt="" />
+                    </Box>
                 </Grid>
               </Grid>
             </Box>
