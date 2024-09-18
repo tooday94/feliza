@@ -42,6 +42,8 @@ function Product() {
         const res = await getProductByID(id);
         if(res.success) {
           setItem(res.data)
+          console.log(res.data);
+          
           if(res.data.sale > 0) {
             setIsSale(true)
           }

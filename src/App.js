@@ -23,6 +23,7 @@ import Order from "./pages/Order/Order";
 import Coupons from "./components/UserPage/Coupons";
 import MyAddresses from "./components/UserPage/MyAddresses";
 import StatusPage from "./components/UserPage/StatusPage";
+import LoadingPage from "./components/Global/LoadingPage";
 
 function App() {
   const initialLastSeenList = [];
@@ -33,6 +34,8 @@ function App() {
   const [lastAction, setLastAction] = useState("");
   const [cardItems, setCardItems] = useState([]);
   const [refreshCard, setRefreshCard] = useState(0);
+  const [isLoading, setIsLoading] = useState(false)
+ 
 
   const [isUzbek, setIsUzbek] = useState(() => {
     const storedUserData = localStorage.getItem("isUzbek");
@@ -76,8 +79,7 @@ function App() {
     if (user) {
       const res = await getLikedItems(user.customerId);
       if (res.success) {
-        //const newList = res.data.map(item => item.product)
-        console.log(res.data);
+        
         setLikedList(res.data);
       }
     } else {
@@ -90,19 +92,9 @@ function App() {
   }, [lastSeenList]);
 
   function addToLastSeenList(value) {
-    const list = [...lastSeenList];
-
-    if (list.some((item) => item.id === value.id)) {
-      list.filter((item) => item.id !== value.id);
-      list.unshift(value);
-    } else if (list.length >= 10) {
-      list.pop();
-      list.unshift(value);
-    } else {
-      list.unshift(value)
-    }
-
-    setLastSeenList(list);
+    const updatedList = [value, ...lastSeenList.filter(item => item.id !== value.id)];
+    const newList = updatedList.slice(0, 10);
+    setLastSeenList(newList);
   }
 
   const changeLikedList = (id) => {
@@ -149,9 +141,10 @@ function App() {
       productSizeVariantId: productSizeVariantId,
       quantity: 1,
     };
-
     const res = await addProductToBasket(cartItem);
-    if (!res?.success) {
+    if (res?.success) {
+      setRefreshCard(prev => prev + 1)
+    } else {
       alert("Xatolik");
     }
   };
@@ -210,12 +203,14 @@ function App() {
         setRefreshCard,
         cardItems,
         setCardItems,
+        setIsLoading
+       
       }}
     >
       <ThemeProvider theme={theme}>
         <Box>
           <BrowserRouter>
-            <HomePageHeader />
+            <HomePageHeader/>
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/products/:id" element={<Products />} />
@@ -234,8 +229,11 @@ function App() {
               <Route path="/my_addresses" element={<MyAddresses/>} />
               <Route path="/my_status" element={<StatusPage/>} />
             </Routes>
-            <MainFooter />
+            <MainFooter/>
           </BrowserRouter>
+          {
+            isLoading && (<LoadingPage/>)
+          }
         </Box>
       </ThemeProvider>
     </MyContext.Provider>

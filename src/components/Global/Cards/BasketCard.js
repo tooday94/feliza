@@ -9,20 +9,25 @@ import { grey } from "@mui/material/colors";
 import { formatNumberWithSpaces } from "../Functions";
 
 function BasketCard({ item }) {
-  const { setRefreshCard, user, isUzbek } = useContext(MyContext);
+  const { setRefreshCard, user, isUzbek, setIsLoading } = useContext(MyContext);
 
   const isSale = item.sale > 0;
 
   const deleteCartItemById = async () => {
+    setIsLoading(true)
     const res = await deleteCartItem(item.cartItemId);
-    if (res.success) {
+    if (res?.success) {
       setRefreshCard((prev) => prev + 1);
+      setIsLoading(false)
+    } else {
+      setIsLoading(false)
     }
   };
 
   console.log(item);
 
   const increaseQuantityOfProduct = () => {
+    setIsLoading(true)
     const fetchData = async () => {
       const newQuantity = item.quantity + 1;
       console.log(newQuantity);
@@ -33,11 +38,11 @@ function BasketCard({ item }) {
       };
       console.log(newCartItem);
       const res = await updateCartItem(item.cartItemId, newCartItem);
-      if (res.success) {
+      if (res?.success) {
         setRefreshCard((prev) => prev + 1);
-        console.log("Özgardi");
+        setIsLoading(false)
       } else {
-        console.log("xatolik");
+        setIsLoading(false)
       }
     };
 
@@ -45,6 +50,7 @@ function BasketCard({ item }) {
   };
 
   const decreaseQuantityOfProduct = async () => {
+    setIsLoading(true)
     const fetchData = async () => {
       const newQuantity = item.quantity - 1;
       console.log(newQuantity);
@@ -57,9 +63,9 @@ function BasketCard({ item }) {
       const res = await updateCartItem(item.cartItemId, newCartItem);
       if (res.success) {
         setRefreshCard((prev) => prev + 1);
-        console.log("Özgardi");
+        setIsLoading(false)
       } else {
-        console.log("xatolik");
+        setIsLoading(false)
       }
     };
 

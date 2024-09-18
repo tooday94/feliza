@@ -14,7 +14,7 @@ import SelectedAddress from "../../components/CheckOut/SelectedAddress";
 import { addOrder } from "../../api/Order";
 import CouponContainer from "../../components/CheckOut/CouponContainer";
 import { getCouponsCustomerByID } from "../../api/Customer";
-import PriceContainer from '../../components/CheckOut/PriceContainer'
+import PriceContainer from "../../components/CheckOut/PriceContainer";
 
 function CheckOut() {
   const [adresseList, setAdresseList] = useState([]);
@@ -29,8 +29,8 @@ function CheckOut() {
   const [couponList, setCouponList] = useState([]);
   const [coupon, setCoupon] = useState(null);
   const [quantity, setQuantity] = useState("");
-  const [priceWithoutCoupon, setPriceWithoutCoupon] = useState("")
-  const [price, setPrice] = useState(0)
+  const [priceWithoutCoupon, setPriceWithoutCoupon] = useState("");
+  const [price, setPrice] = useState(0);
 
   console.log(cardItems);
 
@@ -57,13 +57,13 @@ function CheckOut() {
       0
     );
 
-    const couponPrice = coupon? coupon.coupon.credit : 0
+    const couponPrice = coupon ? coupon.coupon.credit : 0;
     setQuantity(totalQuantity);
-    setPriceWithoutCoupon(tempPrice)
-    if(priceWithoutCoupon - couponPrice > 10000) {
-      setPrice(tempPrice- couponPrice)
-    }else {
-      setPrice(tempPrice)
+    setPriceWithoutCoupon(tempPrice);
+    if (priceWithoutCoupon - couponPrice > 10000) {
+      setPrice(tempPrice - couponPrice);
+    } else {
+      setPrice(tempPrice);
     }
   }, [cardItems, coupon]);
 
@@ -86,15 +86,19 @@ function CheckOut() {
   }, [adresseList]);
 
   const handleCoupon = (coupon) => {
-    const couponPrice = coupon? coupon.coupon.credit : 0
-    if((priceWithoutCoupon - couponPrice) > 10000) {
-      setCoupon(coupon)
+    const couponPrice = coupon ? coupon.coupon.credit : 0;
+    if (priceWithoutCoupon - couponPrice >= 10000) {
+      setCoupon(coupon);
     } else {
-      const InfoUZB = `Bu kupondan foydalanish uchun harid miqdori ${priceWithoutCoupon + 10000} so'm dan kam bo'lmasligi kerak`
-      const InfoRUS = `Чтобы использовать этот купон, сумма покупки должна составлять не менее ${priceWithoutCoupon + 10000} сум`
-      alert(isUzbek? InfoUZB : InfoRUS)
+      const InfoUZB = `Bu kupondan foydalanish uchun harid miqdori ${
+        priceWithoutCoupon + 10000
+      } so'm dan kam bo'lmasligi kerak`;
+      const InfoRUS = `Чтобы использовать этот купон, сумма покупки должна составлять не менее ${
+        priceWithoutCoupon + 10000
+      } сум`;
+      alert(isUzbek ? InfoUZB : InfoRUS);
     }
-  }
+  };
 
   const createOrder = () => {
     setErrorList([]);
@@ -108,7 +112,7 @@ function CheckOut() {
       deliveryDays: 3,
       deliveryDate: "2024-03-07",
       addressId: addressId,
-      couponCustomerId: coupon? coupon.id : null,
+      couponCustomerId: coupon ? coupon.id : null,
       customerId: user.customerId,
       cartItemIds: orderItems,
     };
@@ -117,21 +121,31 @@ function CheckOut() {
       const res = await addOrder(order);
 
       if (res.success) {
-        console.log("Buyurtma berildi");
-        // window.open(res.data.object, "_blank");
         window.location.href = res.data.object;
       }
     };
-    if (fullName.trim() == "") {
-      errorList.push("Iltimos ismin va familiyangizni kriting");
+    if (fullName.trim() === "") {
+      errorList.push(
+        isUzbek
+          ? "Iltimos ismingiz va familiyangizni kiriting"
+          : "Пожалуйста, введите ваше имя и фамилию"
+      );
     }
 
-    if (addressId == 0) {
-      errorList.push("Iltimos manzilingizni kriting");
+    if (addressId === 0) {
+      errorList.push(
+        isUzbek
+          ? "Iltimos manzilingizni kiriting"
+          : "Пожалуйста, введите ваш адрес"
+      );
     }
 
-    if (phoneNumber.trim() == "") {
-      errorList.push("Iltimos telefon raqamingizni kriting");
+    if (phoneNumber.trim() === "") {
+      errorList.push(
+        isUzbek
+          ? "Iltimos telefon raqamingizni kiriting"
+          : "Пожалуйста, введите ваш номер телефона"
+      );
     }
 
     if (errorList.length == 0) {
@@ -191,12 +205,16 @@ function CheckOut() {
               list={couponList}
               coupon={coupon}
               setCoupon={handleCoupon}
-              
             />
 
             <PaymentMethod setPayment={setPayment} payment={payment} />
 
-            <PriceContainer quantity={quantity} priceWithoutCoupon={priceWithoutCoupon} coupon={coupon} price={price}/>
+            <PriceContainer
+              quantity={quantity}
+              priceWithoutCoupon={priceWithoutCoupon}
+              coupon={coupon}
+              price={price}
+            />
 
             <Box sx={{ display: "flex", justifyContent: "end" }}>
               <Button

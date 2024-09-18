@@ -7,6 +7,8 @@ function ProductDrawer({setIsDrawerOpen, isDrawerOpen, item, addProductToBasket}
   const {setRefreshCard, isUzbek} = useContext(MyContext)
 
   const handleClick = (id) => {
+    console.log(id);
+    
     addProductToBasket(id)
     setRefreshCard(prev => prev + 1)
   }
