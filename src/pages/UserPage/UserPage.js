@@ -15,7 +15,6 @@ function UserPage() {
   const [customer, setCustomer] = useState('')
   const navigate = useNavigate()
   
-  console.log(user);
   const logOut = () => {
     navigate('/')
     setUser(null);

@@ -8,38 +8,38 @@ import hat from '../assets/icons/hat.png'
 
 export const clothCategoryList = [
     {
-        id: 2,
+        id: 8,
         nameUZB: 'Kiyimlar',
         nameRUS: 'Одежа',
         icon: dressIcon
     },
     {
-        id: 3,
+        id: 9,
         nameUZB: 'Nessa',
         nameRUS: 'Nessa',
         icon: islamicIcon
     },
     {
-        id: 5,
+        id: 11,
         nameUZB: 'Oyoq kiyim',
         nameRUS: 'Обувь',
         icon: footwear
     },
 
     {
-        id: 6,
+        id: 12,
         nameUZB: 'Aksesuar',
         nameRUS: 'Аксессуар',
         icon: accsessoiresIcon
     },
     {
-        id: 4,
+        id: 10,
         nameUZB: 'Bosh kiyim',
         nameRUS: 'Головной убор',
         icon: hat
     },
     {
-        id: 7,
+        id: 13,
         nameUZB: 'Sumka',
         nameRUS: 'Сумка',
         icon: accsessoires
