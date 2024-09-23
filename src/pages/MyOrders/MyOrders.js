@@ -9,7 +9,7 @@ import boxIcon from "../../assets/icons/empty.png";
 
 function MyOrders() {
   const [orderList, setOrderList] = useState([]);
-  const { user } = useContext(MyContext);
+  const { user, isUzbek } = useContext(MyContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,6 +22,27 @@ function MyOrders() {
     };
     fetchData();
   }, []);
+
+  const orderStatusTranslations = {
+    uzbek: {
+      NEW: 'Buyurtma berildi',
+      PACK: 'Tayyorlandi',
+      SEND: 'Yuborildi',
+      REJECTED: 'Bekor qilindi',
+    },
+    russian: {
+      NEW: 'Заказ оформлен',
+      PACK: 'Подготовлен',
+      SEND: 'Отправлен',
+      REJECTED: 'Отменён',
+    }
+  };
+
+  const getOrderStatusText = (statusType) => {
+    const translations = isUzbek ? orderStatusTranslations.uzbek : orderStatusTranslations.russian;
+    return translations[statusType] || 'Noma\'lum status'; // Default if status is not found
+  };
+
   return (
     <Box sx={{ marginTop: 7, paddingTop: 2 }}>
       {orderList.map((order, idx) => {
@@ -38,7 +59,7 @@ function MyOrders() {
                        Nr: {order.orderId}
                     </Typography>
                     <Typography fontSize={12}>
-                       {order.orderCost} so'm
+                       {order.orderCost} "so'm" : "сум"
                     </Typography>
                 </Box>
 
@@ -48,7 +69,9 @@ function MyOrders() {
                         color: 'white',  marginTop: 1}}
                         onClick={() => navigate(`/order/${order.orderId}`)}
                     >
-                            Batafsil ma'lumot
+                            {
+                              isUzbek? "Batafsil ma'lumot" : "Подробная информация"
+                            }
                         </Button>
                     </Grid>
                 </Grid>
@@ -57,11 +80,14 @@ function MyOrders() {
             <Grid item xs={4} sx={{paddingLeft: 2}}>
                 <Box sx={{borderLeft: '1px solid grey', marginTop: 2, paddingLeft: 1}}>
                     <Typography fontSize={10} color={"grey"}>
-                            Status
+                            {
+                              isUzbek? "Status" : "Статус"
+                            }
                     </Typography>
                     <Typography fontSize={12}>
-                        {order.orderStatusType == 'NEW' ? 'Buyurtma berildi' : (order.orderStatusType == 'Pack' ? 'Tayyorlandi' : 
-                        (order.orderStatusType == 'SEND' ? 'Yuborildi' : 'Bekor qilindi'))}
+                        { 
+                          getOrderStatusText(order.orderStatusType)
+                        }
                     </Typography>
                 </Box>
             </Grid>
@@ -109,7 +135,9 @@ function MyOrders() {
                 <img src={boxIcon} alt="" />
               </Box>
               <Typography>
-                Hozircha sizda  buyurtmalar  mavjud emas
+                {
+                  isUzbek? "Hozircha sizda  buyurtmalar  mavjud emas" : "Пока у вас нет заказов"
+                }
               </Typography>
             </Grid>
           </Grid>

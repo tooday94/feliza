@@ -78,7 +78,9 @@ function Coupons() {
                 </Typography>
                     <Box display={"flex"}>
                     <Typography fontSize={'11px'} color={'white'}>
-                        Amal qilish muddati: 
+                        {
+                          isUzbek? "Amal qilish muddati:" : "Срок действия:"
+                        }
                     </Typography>
                     <Typography fontSize={'11px'} color={'white'}>
                         22.08.2024

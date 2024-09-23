@@ -15,6 +15,10 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
     setValue(event.target.value);
   };
 
+  const handleBoxChange = (id) => {
+    setValue(id)
+  }
+
   console.log(adresseList);
   
 
@@ -46,7 +50,8 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
                       display={"flex"}
                       alignItems={"center"}
                     >
-                      <Grid item xs={10}>
+                      <Grid item xs={10} onClick={() => handleBoxChange(item.id)}>
+
                         <Typography>
                           {idx + 1}.{" "}
                           {isUzbek ? item.region.nameUZB : item.region.nameRUS},{" "}

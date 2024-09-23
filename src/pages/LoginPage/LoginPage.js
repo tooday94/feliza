@@ -42,6 +42,7 @@ function LoginPage() {
     lastAction,
     changeLikedList,
     setLastAction,
+    isUzbek
   } = useContext(MyContext);
   const navigate = useNavigate();
 
@@ -221,12 +222,53 @@ function LoginPage() {
     }
   };
 
+  const translations = {
+    uzbek: {
+      loginTitle: "Tizimga Kirish",
+      phoneNumberLabel: "Telefon raqamingiz",
+      sendButton: "Yuborish",
+      passwordLabel: "Parol",
+      forgotPassword: "Parolni unutdingizmi?",
+      verificationMessage: "Tasdiqlash kodi sizga sms orqali yuborildi",
+      verificationCodeLabel: "Tasdiqlash kodi",
+      fullNameLabel: "Ism va familiyangiz",
+      birthDateHelper: "Tug'ilgan sanangizni kriting",
+      passwordHelper: "Kamida 6ta belgidan iborat parol",
+      maleLabel: "Erkak",
+      femaleLabel: "Ayol",
+      cancelButton: "Bekor qilish",
+      newPasswordLabel: "Yangi parolni kriting",
+      verificationMessage2: "Tasdiqlash kodi sizga sms orqali yuborildi",
+      submitButton: "Yuborish",
+    },
+    russian: {
+      loginTitle: "Вход в систему",
+      phoneNumberLabel: "Ваш номер телефона",
+      sendButton: "Отправить",
+      passwordLabel: "Пароль",
+      forgotPassword: "Забыли пароль?",
+      verificationMessage: "Код подтверждения отправлен вам по SMS",
+      verificationCodeLabel: "Код подтверждения",
+      fullNameLabel: "Ваше имя и фамилия",
+      birthDateHelper: "Введите вашу дату рождения",
+      passwordHelper: "Пароль должен содержать не менее 6 символов",
+      maleLabel: "Мужчина",
+      femaleLabel: "Женщина",
+      cancelButton: "Отменить",
+      newPasswordLabel: "Введите новый пароль",
+      verificationMessage2: "Код подтверждения отправлен вам по SMS",
+      submitButton: "Отправить",
+    }
+  };
+
+  const t = isUzbek ? translations.uzbek : translations.russian;
+
   return (
-    <Box sx={{ width: "100%" }} align="center">
+    <Box sx={{ width: "100%", paddingBottom: 2 }} align="center">
       <Box sx={{ width: "100%" }}>
         <Box display="flex" padding={2} alignItems="center">
           <Box flex={1} align="center">
-            <Typography variant="h5">Tizimga Kirish</Typography>
+            <Typography variant="h5">{t.loginTitle}</Typography>
           </Box>
           <IconButton onClick={() => setIsLoginPageOpen(false)}>
             <Close />
@@ -237,7 +279,7 @@ function LoginPage() {
           <Box width="300px" marginY={3}>
             <TextField
               variant="outlined"
-              label="Telefon raqamingiz"
+              label={t.phoneNumberLabel}
               size="small"
               fullWidth
               value={tel}
@@ -246,7 +288,7 @@ function LoginPage() {
           </Box>
 
           <Button variant="contained" onClick={checkPhoneNumber}>
-            Yuborish
+            {t.sendButton}
           </Button>
         </Box>
 
@@ -254,7 +296,7 @@ function LoginPage() {
           <Box width="300px" marginTop={3}>
             <TextField
               variant="outlined"
-              label="Parol"
+              label={t.passwordLabel}
               size="small"
               type="password"
               fullWidth
@@ -265,7 +307,7 @@ function LoginPage() {
           </Box>
 
           <Button variant="contained" onClick={loginUser}>
-            Yuborish
+            {t.sendButton}
           </Button>
           <Box marginTop={1}>
             <Typography
@@ -273,17 +315,18 @@ function LoginPage() {
               sx={{ color: "blue" }}
               onClick={handelPassForget}
             >
-              Parolni unutdingizmi?
+              {t.forgotPassword}
             </Typography>
           </Box>
         </Box>
+
         <Box sx={{ display: isRegistreted == 2 ? "block" : "none" }}>
           <Box width="300px" marginTop={3}>
-            <Typography>Tasdiqlash kodi sizga sms orqali yuborildi</Typography>
+            <Typography>{t.verificationMessage}</Typography>
             <TextField
               variant="outlined"
               size="small"
-              label="Tasdiqlash kodi"
+              label={t.verificationCodeLabel}
               fullWidth
               sx={{ marginTop: 2 }}
               value={verifyCode}
@@ -296,7 +339,7 @@ function LoginPage() {
             variant="contained"
             onClick={checkVerifyCode}
           >
-            Yuborish
+            {t.sendButton}
           </Button>
         </Box>
 
@@ -317,7 +360,7 @@ function LoginPage() {
             <TextField
               variant="outlined"
               size="small"
-              label="Ism va familiyangiz"
+              label={t.fullNameLabel}
               fullWidth
               sx={{ marginTop: 2 }}
               value={fullName}
@@ -330,7 +373,7 @@ function LoginPage() {
               size="small"
               label=""
               fullWidth
-              helperText="Tug'ilgan sanangizni kriting"
+              helperText={t.birthDateHelper}
               sx={{ marginTop: 2 }}
               value={birthDate}
               onChange={(e) => setBirthDate(e.target.value)}
@@ -346,22 +389,21 @@ function LoginPage() {
               <FormControlLabel
                 value="female"
                 control={<Radio />}
-                label="Ayol"
+                label={t.femaleLabel}
               />
-              <FormControlLabel 
-                value="male" 
-                control={<Radio />} 
-                label="Erkak" 
+              <FormControlLabel
+                value="male"
+                control={<Radio />}
+                label={t.maleLabel}
               />
-              
             </RadioGroup>
             <TextField
               variant="outlined"
               size="small"
-              label="Parol"
+              label={t.passwordLabel}
               fullWidth
               sx={{ marginY: 2 }}
-              helperText="Kamida 6ta belgidan iborat parol"
+              helperText={t.passwordHelper}
               value={registerPassword}
               type="password"
               onChange={(e) => setRegisterPassword(e.target.value)}
@@ -369,16 +411,16 @@ function LoginPage() {
           </Box>
 
           <Button variant="outlined" onClick={checkUserData}>
-            Yuborish
+            {t.submitButton}
           </Button>
         </Box>
 
         <Box sx={{ display: isRegistreted == 4 ? "block" : "none" }}>
-          <Typography>Tasdiqlash kodi sizga sms orqali yuborildi</Typography>
+          <Typography>{t.verificationMessage2}</Typography>
           <Box width="300px" marginTop={1}>
             <TextField
               variant="outlined"
-              label="Tasdiqlash kodi"
+              label={t.verificationCodeLabel}
               size="small"
               type="number"
               fullWidth
@@ -389,10 +431,10 @@ function LoginPage() {
             <TextField
               variant="outlined"
               size="small"
-              label="Yangi parolni kriting"
+              label={t.newPasswordLabel}
               fullWidth
               sx={{ marginY: 1 }}
-              helperText="Kamida 6ta belgidan iborat parol"
+              helperText={t.passwordHelper}
               value={newPassword}
               type="password"
               onChange={(e) => setNewPassword(e.target.value)}
@@ -404,7 +446,7 @@ function LoginPage() {
               size="small"
               onClick={() => setIsRegistreted(1)}
             >
-              Bekor qilish
+              {t.cancelButton}
             </Button>
 
             <Button
@@ -413,7 +455,7 @@ function LoginPage() {
               size="small"
               onClick={restorePasswordByCustomer}
             >
-              Yuborish
+              {t.sendButton}
             </Button>
           </Box>
         </Box>

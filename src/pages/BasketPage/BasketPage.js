@@ -8,7 +8,7 @@ import { getCartItemsByCustomerId } from "../../api/Basket";
 import boxIcon from "../../assets/icons/empty.png";
 
 function BasketPage() {
-  const { cardItems } = useContext(MyContext);
+  const { cardItems, isUzbek } = useContext(MyContext);
 
   let sum = 0;
 
@@ -34,7 +34,9 @@ function BasketPage() {
                 <img src={boxIcon} alt="" />
               </Box>
               <Typography>
-                Hozircha savatchangizda mahsulotlar röyxati mavjud emas
+                {
+                  isUzbek? "Hozircha savatchangizda mahsulotlar mavjud emas" : "Пока в вашей корзине нет товаров"
+                }
               </Typography>
             </Grid>
           </Grid>

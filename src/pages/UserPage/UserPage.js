@@ -33,7 +33,7 @@ function UserPage() {
     if(user) {
       fetchData();
     }
-  }, [user])
+  }, [])
 
   useEffect(() => {
     

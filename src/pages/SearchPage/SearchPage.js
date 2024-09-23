@@ -15,7 +15,7 @@ import SmallSlider from "../../components/Sliders/SmallSlider";
 function SearchPage({ setIsSearchOpen }) {
   const [searchState, setSearchState] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-  const { lastSeenList } = useContext(MyContext);
+  const { lastSeenList, isUzbek } = useContext(MyContext);
   const [list, setList] = useState([]);
 
   const removeApostrophes = (word) => word.replace(/'/g, "");
@@ -45,7 +45,7 @@ function SearchPage({ setIsSearchOpen }) {
             <TextField
               fullWidth
               id="outlined-basic"
-              label="Mahsulot nomini kriting"
+              label={isUzbek ? "Mahsulot nomini kriting" : "Введите название товара"}
               variant="outlined"
               size="small"
               value={searchState}
@@ -77,7 +77,9 @@ function SearchPage({ setIsSearchOpen }) {
       <Box sx={{ marginTop: 8 }}>
         <Box marginTop={3}>
           <Typography variant="h5" paddingY={1}>
-            Oxirgi ko'rilgan mahsulotlar
+            {
+              isUzbek ? "Oxirgi ko'rilgan mahsulotlar" : "Последние просмотренные товары"
+            }
           </Typography>
           <SmallSlider list={lastSeenList} />
         </Box>
