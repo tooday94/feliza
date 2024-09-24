@@ -24,7 +24,14 @@ function SelectedAddress({ adresseList, setAddressId, addressId }) {
                 ? address?.subRegion?.nameUZB
                 : address?.subRegion?.nameRUS
               : ""}
-            , {address?.street? address?.street : address?.postFilial?.postFilialName}  {address?.houseNumber}
+            ,{" "}
+            {address?.street
+              ? `${address?.street} ${address?.houseNumber || ""}`
+              : address?.postFilial
+              ? `${address?.postFilial?.postName}, ${
+                  address?.postFilial?.postFilialName || ""
+                }`
+              : ""}
           </Typography>
         </Grid>
         <Grid item xs={2}>

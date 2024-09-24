@@ -14,31 +14,48 @@ function OrderContactInfo({order}) {
             marginBottom: 2,
           }}
         >
-          <Grid item xs={6}>
-            <Typography fontSize={14} fontWeight={"bold"}>
-              {
-                isUzbek? "Yetkazish manzili:" : "Адрес доставки:"
-              }
-            </Typography>
-            <Typography fontSize={12} sx={{ color: "#616161" }}>
-              {order?.receiverName}
-            </Typography>
-            <Typography fontSize={12} sx={{ color: "#616161" }}>
-              {isUzbek? order?.address?.region?.nameUZB : order?.address?.region?.nameRUS}
-            </Typography>
-            <Typography fontSize={12} sx={{ color: "#616161" }}>
-            {isUzbek? order?.address?.subRegion?.nameUZB : order?.address?.subRegion?.nameRUS}
-            </Typography>
+         <Grid item xs={6}>
+  <Typography fontSize={14} fontWeight={"bold"}>
+    {isUzbek ? "Yetkazish manzili:" : "Адрес доставки:"}
+  </Typography>
 
-            <Box display={"flex"} gap={1}>
-              <Typography fontSize={12} sx={{ color: "#616161" }}>
-                {order?.address?.street},
-              </Typography>
-              <Typography fontSize={12} sx={{ color: "#616161" }}>
-                {order?.address?.houseNumber}
-              </Typography>
-            </Box>
-          </Grid>
+  {order?.address?.postFilial ? (
+    <>
+      {/* If postFilial exists */}
+      <Typography fontSize={12} sx={{ color: "#616161" }}>
+        {isUzbek ? order?.address?.region?.nameUZB : order?.address?.region?.nameRUS}
+      </Typography>
+      <Typography fontSize={12} sx={{ color: "#616161" }}>
+        {isUzbek ? order?.address?.subRegion?.nameUZB : order?.address?.subRegion?.nameRUS}
+      </Typography>
+      <Typography fontSize={12} sx={{ color: "#616161" }}>
+        {isUzbek ? order?.address?.postFilial?.postName : order?.address?.postFilial?.postName}
+      </Typography>
+      <Typography fontSize={12} sx={{ color: "#616161" }}>
+        {isUzbek ? order?.address?.postFilial?.postFilialName : order?.address?.postFilial?.postFilialName}
+      </Typography>
+    </>
+  ) : (
+    <>
+      {/* If postFilial does not exist */}
+      <Typography fontSize={12} sx={{ color: "#616161" }}>
+        {isUzbek ? order?.address?.region?.nameUZB : order?.address?.region?.nameRUS}
+      </Typography>
+      <Typography fontSize={12} sx={{ color: "#616161" }}>
+        {isUzbek ? order?.address?.subRegion?.nameUZB : order?.address?.subRegion?.nameRUS}
+      </Typography>
+      <Box display={"flex"} gap={1}>
+        <Typography fontSize={12} sx={{ color: "#616161" }}>
+          {order?.address?.street},
+        </Typography>
+        <Typography fontSize={12} sx={{ color: "#616161" }}>
+          {order?.address?.houseNumber}
+        </Typography>
+      </Box>
+    </>
+  )}
+</Grid>
+
           <Grid item xs={6}>
             <Typography fontSize={14} fontWeight={"bold"}>
               {

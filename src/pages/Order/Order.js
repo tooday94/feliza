@@ -46,10 +46,10 @@ function Order() {
                 {
                     isUzbek ? 
                     (order.orderStatusType == 'NEW' ? 'Buyurtma berildi' : 
-                     (order.orderStatusType == 'Pack' ? 'Tayyorlandi' : 
+                     (order.orderStatusType == 'PACK' ? 'Tayyorlandi' : 
                      (order.orderStatusType == 'SEND' ? 'Yuborildi' : 'Bekor qilindi'))) :
                     (order.orderStatusType == 'NEW' ? 'Заказ оформлен' : 
-                     (order.orderStatusType == 'Pack' ? 'Подготовлен' : 
+                     (order.orderStatusType == 'PACK' ? 'Подготовлен' : 
                      (order.orderStatusType == 'SEND' ? 'Отправлен' : 'Отменен')))
                 }
             </Typography>

@@ -44,6 +44,7 @@ function MyAddresses() {
                 <Box>
                   <Typography>{isUzbek? item.region.nameUZB : item.region.nameRUS}</Typography>
                   <Typography>{isUzbek? item.subRegion.nameUZB : item.subRegion.nameRUS}</Typography>
+                  <Typography>{item?.postFilial?.postName}</Typography>
                   <Typography>{item?.postFilial?.postFilialName}</Typography>
                   <Box display={"flex"} gap={1}>
                   <Typography>{item?.street}</Typography>

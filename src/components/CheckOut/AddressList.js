@@ -16,11 +16,10 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
   };
 
   const handleBoxChange = (id) => {
-    setValue(id)
-  }
+    setValue(id);
+  };
 
   console.log(adresseList);
-  
 
   return (
     <Box sx={{ marginTop: 2, width: "100%" }}>
@@ -33,8 +32,8 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
             onChange={handleChange}
           >
             {Array.isArray(adresseList) &&
-              adresseList.map((item, idx) => {
-                const key = idx * item.id;
+              adresseList.map((address, idx) => {
+                const key = idx * address.id;
                 const isLast = adresseList.length - 1 == idx;
                 return (
                   <Box
@@ -50,19 +49,37 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
                       display={"flex"}
                       alignItems={"center"}
                     >
-                      <Grid item xs={10} onClick={() => handleBoxChange(item.id)}>
-
+                      <Grid
+                        item
+                        xs={10}
+                        onClick={() => handleBoxChange(address.id)}
+                      >
+                        
                         <Typography>
                           {idx + 1}.{" "}
-                          {isUzbek ? item.region.nameUZB : item.region.nameRUS},{" "}
-                          {isUzbek
-                            ? item.subRegion.nameUZB
-                            : item.subRegion.nameRUS}
-                          , {item.street !== "" ?item.street : item.postFilial?.postFilialName}  {item.houseNumber}
+                          {address
+                            ? isUzbek
+                              ? address?.region?.nameUZB
+                              : address?.region?.nameRUS
+                            : ""}
+                          ,{" "}
+                          {address
+                            ? isUzbek
+                              ? address?.subRegion?.nameUZB
+                              : address?.subRegion?.nameRUS
+                            : ""}
+                          ,{" "}
+                          {address?.street
+                            ? `${address?.street} ${address?.houseNumber || ""}`
+                            : address?.postFilial
+                            ? `${address?.postFilial?.postName}, ${
+                                address?.postFilial?.postFilialName || ""
+                              }`
+                            : ""}
                         </Typography>
                       </Grid>
                       <Grid item xs={2} display={"flex"} justifyContent={"end"}>
-                        <FormControlLabel value={item.id} control={<Radio />} />
+                        <FormControlLabel value={address.id} control={<Radio />} />
                       </Grid>
                     </Grid>
                   </Box>

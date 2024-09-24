@@ -6,6 +6,7 @@ import MyContext from "../../components/Context/MyContext";
 import { getOrdersByCustomerId } from "../../api/Order";
 import {useNavigate} from 'react-router-dom'
 import boxIcon from "../../assets/icons/empty.png";
+import { formatNumberWithSpaces } from "../../components/Global/Functions";
 
 function MyOrders() {
   const [orderList, setOrderList] = useState([]);
@@ -56,10 +57,10 @@ function MyOrders() {
                         {formattedDate}
                     </Typography>
                     <Typography fontSize={12}>
-                       Nr: {order.orderId}
+                       Nr: {order.orderNumber}
                     </Typography>
                     <Typography fontSize={12}>
-                       {order.orderCost} "so'm" : "сум"
+                       {formatNumberWithSpaces(order.orderCost)} {isUzbek? "so'm" : "сум"}
                     </Typography>
                 </Box>
 
