@@ -102,37 +102,66 @@ function LoginPage() {
 
   const checkUserData = () => {
     const nameRegex = /^[a-zA-Z\s]+$/;
+  
     if (!nameRegex.test(fullName.trim())) {
-      alert("Iltimos ism uchun faqat harflardan foydalaning");
+      alert(
+        isUzbek
+          ? "Iltimos ism uchun faqat harflardan foydalaning"
+          : "Пожалуйста, используйте только буквы для имени"
+      );
       return;
     }
-
+  
     if (fullName.trim().length <= 3) {
-      alert("Iltimos ism va familiyangizni töliq kriting");
+      alert(
+        isUzbek
+          ? "Iltimos ism va familiyangizni töliq kriting"
+          : "Пожалуйста, введите полное имя и фамилию"
+      );
       return;
     }
+  
     if (registerPassword.trim().length <= 5) {
-      alert("Parolda kamida 6 ta belgi bo'lishi kerak");
+      alert(
+        isUzbek
+          ? "Parolda kamida 6 ta belgi bo'lishi kerak"
+          : "Пароль должен содержать не менее 6 символов"
+      );
       return;
     }
+  
     if (verifyCode.trim().length !== 4) {
-      alert("Iltimos tasdiqlash kodini kiriting");
+      alert(
+        isUzbek
+          ? "Iltimos tasdiqlash kodini kiriting"
+          : "Пожалуйста, введите код подтверждения"
+      );
       return;
     }
-
+  
     const dob = new Date(birthDate);
     if (isNaN(dob.getTime())) {
-      alert("Iltimos to'g'ri sanani kiriting");
+      alert(
+        isUzbek
+          ? "Iltimos to'g'ri sanani kiriting"
+          : "Пожалуйста, введите правильную дату"
+      );
       return;
     }
-
+  
     const currentDate = new Date();
     if (dob > currentDate) {
-      alert("Kelajakdagi tug'ilgan sanani kiritish mumkin emas");
+      alert(
+        isUzbek
+          ? "Kelajakdagi tug'ilgan sanani kiritish mumkin emas"
+          : "Нельзя указать дату рождения из будущего"
+      );
       return;
     }
+  
     createUser();
   };
+  
 
   const createUser = async () => {
     const user = {
@@ -146,7 +175,6 @@ function LoginPage() {
     const res = await createNewUser(user);
     if (res.success) {
       loginUser();
-      console.log("Foydalanuvchi qoshildi");
       // setBirthDate('');
       // setFullname('')
       // setTel('')
@@ -199,7 +227,7 @@ function LoginPage() {
       newPassword: newPassword,
       verifyCode: changePasswordCode,
     };
-    console.log(bodyObj);
+    
     const res = await restorePassword(bodyObj);
 
     if (res.success) {

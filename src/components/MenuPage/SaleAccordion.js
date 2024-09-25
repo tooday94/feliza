@@ -39,7 +39,7 @@ function SaleAccordion({setIsDrawerOpen, item}) {
           <Box sx={{borderBottom: '1px solid lightgray', py: 1}}>
             <Link to={`/sale_product/${item.id}`} >
               <Typography marginLeft='30px' onClick={() => setIsDrawerOpen(false)} my={1}>
-                Barcha {item.nameUZB}
+              {isUzbek ? `Barcha mahsulotlar` : 'Все товары'}
               </Typography>
             </Link>
           </Box>

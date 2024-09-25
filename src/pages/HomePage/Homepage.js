@@ -33,22 +33,22 @@ function Homepage() {
               <SliderMain/>
               <CategoryIconsBox/>
               <MainCategoryContainer list={clothesCategoryList} />
-              <CategorySlidersContainer categoryId={69}/>
-              <CategorySlidersContainer categoryId={41}/>
+              <CategorySlidersContainer categoryId={52}/>
+              <CategorySlidersContainer categoryId={43}/>
               <Box sx={{display: {sm: 'block', md: 'none'}}}>
                 <MainCategoryContainer list={categorySliderList2} />
-                <CategorySlidersContainer categoryId={26}/>
-                <CategorySlidersContainer categoryId={19}/>
+                <CategorySlidersContainer categoryId={28}/>
+                <CategorySlidersContainer categoryId={22}/>
               </Box>
               
               <MainCategoryContainer list={nessaCategoryList} />
-              <CategorySlidersContainer categoryId={52}/>
-              <CategorySlidersContainer categoryId={45}/>
+              <CategorySlidersContainer categoryId={62}/>
+              <CategorySlidersContainer categoryId={60}/>
               
               
               <MainCategoryContainer list={categorySliderList3} />
-              <CategorySlidersContainer categoryId={55}/>
-              <CategorySlidersContainer categoryId={7}/>
+              <CategorySlidersContainer categoryId={65}/>
+              <CategorySlidersContainer categoryId={13}/>
               <Grid container spacing={1}>
               {/* {
                 list.map((item, idx) => {

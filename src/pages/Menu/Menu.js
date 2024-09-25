@@ -44,7 +44,7 @@ function Menu({setIsDrawerOpen}) {
             <Box sx={{width: '25px', height: '25px'}}>
               <img src={lookIcon} alt="" />
             </Box>
-            <Typography>{isUzbek ? "Look" : 'Look'}</Typography>
+            <Typography>Look</Typography>
         </Box>
         <Accordion>
         <AccordionSummary
