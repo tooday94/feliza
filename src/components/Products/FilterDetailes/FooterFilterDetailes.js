@@ -22,6 +22,7 @@ function FooterFilterDetailes({list, setProducts, setIsFilterOpen, refreshFilter
               variant='contained' 
               sx={{backgroundColor: 'primary.main'}}
               onClick={handelClick}
+              disabled
             >
                 Ko'rish {list?.length}
             </Button>

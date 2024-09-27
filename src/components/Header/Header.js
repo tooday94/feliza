@@ -87,6 +87,7 @@ export default function HomePageHeader() {
             setIsSearchOpen={setIsSearchOpen}
             navigateUserToFovoritePage={navigateUserToFovoritePage}
             navigateUserToBasket={navigateUserToBasket}
+            navigateUser={navigateUser}
           />
         </AppBar>
       </Box>

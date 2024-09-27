@@ -102,8 +102,9 @@ function BasketCard({ item }) {
               display={"flex"}
               justifyContent={"space-between"}
               marginBottom={2}
+              gap={1}
             >
-              <Typography sx={{ fontWeight: "bold" }}>
+              <Typography sx={{ fontWeight: "bold", fontSize: 12 }}>
                 {isUzbek ? item.nameUZB : item.nameRUS}
               </Typography>
 
