@@ -15,6 +15,9 @@ function DeliveryInformationRu() {
         <Typography >
             Срок доставки по Узбекистану от 1 до 3 дней.
         </Typography>
+        <Typography sx={{marginY: 3}}>
+         Напоминаем, что для товаров до 400 000 сум стоимость доставки составляет 28 000 сум.
+        </Typography>
     </Box>
   )
 }

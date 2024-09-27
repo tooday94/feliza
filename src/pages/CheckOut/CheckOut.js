@@ -201,11 +201,13 @@ function CheckOut() {
               phoneNumber={phoneNumber}
             />
 
-            <CouponContainer
-              list={couponList}
-              coupon={coupon}
-              setCoupon={handleCoupon}
-            />
+            <Box sx={{display: couponList?.length == 0? 'none' : 'block'}}>
+              <CouponContainer
+                list={couponList}
+                coupon={coupon}
+                setCoupon={handleCoupon}
+              />
+            </Box>
 
             <PaymentMethod setPayment={setPayment} payment={payment} />
 

@@ -39,7 +39,7 @@ function PaymentMethod({ setPayment, payment }) {
             control={<Radio />}
             label="Payme"
           />
-          <FormControlLabel value="cash" control={<Radio />} label={isUzbek ? "Naqd pul" : "Наличные"} />
+          {/* <FormControlLabel value="cash" control={<Radio />} label={isUzbek ? "Naqd pul" : "Наличные"} /> */}
         </RadioGroup>
       </FormControl>
     </Box>

@@ -13,7 +13,7 @@ function LastSeenSLider() {
 
   return (
     <Box marginTop={3}>
-      <Typography variant="h5" paddingY={1}>
+      <Typography variant="h5" paddingY={1} marginLeft={1}>
       {
         isUzbek? "Oxirgi ko'rilgan mahsulotlar" : "Недавно просмотренные товары"
       }

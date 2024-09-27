@@ -9,16 +9,16 @@ function StatusIcons({status}) {
   return (
     <Box display={'flex'} justifyContent={'center'} gap={4} fontSize={25} paddingTop={1}>
         <Box >
-           <PiBagSimpleThin />  
+           <PiBagSimpleThin/>  
         </Box>
         <Box >
-           <PiPackageLight />  
+           <PiPackageLight color={(status == 'NEW') || (status == 'REJECTED') ? 'grey' : 'black'}/>  
         </Box>
         <Box >
-           <LiaShippingFastSolid />  
+           <LiaShippingFastSolid color={(status == 'NEW') || (status == 'REJECTED') || (status == 'PACK')? 'grey' : 'black'}/>  
         </Box>
         <Box>
-           <AiOutlineHome />  
+           <AiOutlineHome color={(status == 'REACHED') ? 'black' : 'grey'}/>  
         </Box>
         
     </Box>

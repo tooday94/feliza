@@ -15,6 +15,10 @@ function DeliveryInformationUz() {
         <Typography >
             Buyurtmalar Özbekiston böylab 1-3 kun ichida yetkazib beriladi
         </Typography>
+
+        <Typography sx={{marginY: 3}}>
+        Eslatib o‘tamiz, 400 000 so‘mgacha bo‘lgan tovarlar uchun yetkazib berish xizmati 28 000 so‘m etib belgilangan.
+        </Typography>
     </Box>
   )
 }
