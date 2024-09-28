@@ -7,8 +7,8 @@ export const desktopNavList = [
     },
     {
         id: 2,
-        nameUZB: 'Islomiy Kiyimlar',
-        nameRUS: 'Хиджаб',
+        nameUZB: 'Nessa',
+        nameRUS: 'Nessa',
         imgUrl: 'https://www.optimized-rlmedia.io/is/image/PoloGSI/s7-AI290942293001_alternate10?$rl_4x5_pdp$'
     },
     {

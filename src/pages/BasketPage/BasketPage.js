@@ -11,12 +11,14 @@ function BasketPage() {
   const { cardItems, isUzbek } = useContext(MyContext);
 
   let sum = 0;
+  
 
   return (
     <Box sx={{ marginTop: "12vh", minHeight: "75vh", paddingBottom: "5vh" }}>
       <Box aligen="center">
         {cardItems.map((item) => {
-          sum = sum + item.sellPrice * item.quantity;
+          const isSale = item.sale > 0;
+          sum = sum + (isSale ? item.salePrice * item.quantity : item.sellPrice * item.quantity);
           return <BasketCard key={item.cartItemId} item={item} />;
         })}
       </Box>

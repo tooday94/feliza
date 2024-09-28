@@ -27,6 +27,8 @@ function UserPage() {
       if (res?.success) {
         setCustomer(res.data.object);
         console.log(res.data);
+      } else {
+        logOut();
       }
     };
 

@@ -30,12 +30,15 @@ function MyOrders() {
       PACK: 'Tayyorlandi',
       SEND: 'Yuborildi',
       REJECTED: 'Bekor qilindi',
+      REACHED: 'Yetkazildi'
     },
     russian: {
       NEW: 'Заказ оформлен',
       PACK: 'Подготовлен',
       SEND: 'Отправлен',
       REJECTED: 'Отменён',
+      REACHED: 'Доставлен'
+
     }
   };
 

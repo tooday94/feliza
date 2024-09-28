@@ -99,12 +99,12 @@ function BasketCard({ item }) {
             justifyContent="space-between"
           >
             <Box
-              display={"flex"}
-              justifyContent={"space-between"}
+              
+              
               marginBottom={2}
-              gap={1}
+              
             >
-              <Typography sx={{ fontWeight: "bold", fontSize: 12 }}>
+              <Typography sx={{ fontWeight: "bold", fontSize: 14 }}>
                 {isUzbek ? item.nameUZB : item.nameRUS}
               </Typography>
 
@@ -112,7 +112,7 @@ function BasketCard({ item }) {
               <Box>
                 {isSale && (
                   <Typography fontSize={14} sx={{ color: "red" }}>
-                    {formatNumberWithSpaces(item.sellPrice * item.quantity)}{" "}
+                    {formatNumberWithSpaces(item.salePrice * item.quantity)}{" "}
                     {isUzbek ? "so'm" : "сум"}
                   </Typography>
                 )}

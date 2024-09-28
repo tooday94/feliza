@@ -161,7 +161,7 @@ function Menu({ setIsDrawerOpen }) {
             </Box>
           </AccordionSummary>
           <AccordionDetails>
-            <Box marginLeft="30px">
+            <Box marginLeft="20px">
               
               {
                 filialList.map((item, idx) => {
