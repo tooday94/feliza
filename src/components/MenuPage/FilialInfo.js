@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import MyContext from "../Context/MyContext";
 
 function FilialInfo({ item }) {
-  const isUzbek = useContext(MyContext);
+  const {isUzbek} = useContext(MyContext);
   return (
     <Box>
       <Typography fontWeight={"bold"}>
@@ -21,11 +21,7 @@ function FilialInfo({ item }) {
           target="_blank"
           rel="noopener noreferrer"
           sx={{
-            // whiteSpace: "nowrap",
-            // overflow: "hidden",
-            // textOverflow: "ellipsis",
-            // display: "inline-block",
-            maxWidth: "80%", // Adjust max width to your layout
+            maxWidth: "80%", 
           }}
         >
           {isUzbek ? item.locationUZ : item.locationRU}

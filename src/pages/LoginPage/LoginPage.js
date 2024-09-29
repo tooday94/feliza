@@ -180,10 +180,6 @@ function LoginPage() {
     return `${day}-${month}-${year}`;
   };
   
-  // Example usage
-  const date = "2024-09-25"; // Any date string or object
-  console.log(formatDateToDDMMYYYY(date)); // Output: "25-09-2024"
-  
   
 
   const createUser = async () => {
@@ -193,7 +189,7 @@ function LoginPage() {
       birthDate: formatDateToDDMMYYYY(birthDate),
       phoneNumber: tel,
       verifyCode: verifyCode,
-      grnder: gender
+      gender: gender
     };
 
     const res = await createNewUser(user);

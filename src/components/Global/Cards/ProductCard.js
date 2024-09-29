@@ -82,13 +82,13 @@ export default function ProductCard({ item, bigSize }) {
         </Box>
         <Box display={"flex"} gap={1} alignItems={"center"}>
           {isSale && (
-            <Typography fontSize={14} sx={{ color: "red" }}>
+            <Typography fontSize={13} sx={{ color: "red" }}>
               {formatNumberWithSpaces(item.salePrice)}{" "}
               {isUzbek ? "so'm" : "сум"}
             </Typography>
           )}
           <Typography
-            fontSize={isSale? 10 : 14}
+            fontSize={isSale? 10 : 13}
             sx={{
               textDecoration: isSale ? "line-through" : "none",
               color: isSale ? "grey" : "black",

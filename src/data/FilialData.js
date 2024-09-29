@@ -1,7 +1,7 @@
 export const filialList = [
     {
         addresseUZ: "Chilonzor",
-        addresseRU: "Chilonzor",
+        addresseRU: "Чилонзор",
         link: "https://yandex.uz/maps/-/CDSvzI9o",
         locationUZ: "Chilonzor  16-kvartal, Bunyodkor shoh ko'chasi, 18",
         locationRU: "Чилонзор 16-й квартал, дом 18, проспект Буньодкор"

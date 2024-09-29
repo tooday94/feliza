@@ -53,7 +53,7 @@ function CheckOut() {
     );
 
     const tempPrice = cardItems.reduce(
-      (sum, item) => sum + item.quantity * item.sellPrice,
+      (sum, item) => sum + item.quantity * (item.sale > 0 ? item.salePrice : item.sellPrice),
       0
     );
 
