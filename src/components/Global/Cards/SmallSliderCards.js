@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Box, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
-import MyContext from "../../Context/MyContext";
+import MyContext from "./Context/MyContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { formatNumberWithSpaces, truncateText } from "../Functions";
 
@@ -32,7 +32,7 @@ export default function SmallSliderCards({ item }) {
           </Link>
         </Box>
 
-        <Box display={"flex"} gap={1} alignItems={"center"}>
+        <Box  alignItems={"center"}>
           {isSale && (
             <Typography fontSize={14} sx={{ color: "red" }}>
               {formatNumberWithSpaces(item.salePrice)}{" "}

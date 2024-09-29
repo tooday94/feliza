@@ -19,6 +19,8 @@ const isRegistretedUser = async(phone) => {
 
 const createNewUser = async(user) => {
     try {
+        console.log(user);
+        
         const res = await axios.post(baseURL + 'register', user);
         if(res.status = 200) {
             return {data: res.data, success: true}

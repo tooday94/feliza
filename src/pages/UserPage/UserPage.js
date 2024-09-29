@@ -25,7 +25,7 @@ function UserPage() {
     const fetchData = async () => {
       const res = await getCustomerByID(user.customerId);
       if (res?.success) {
-        setCustomer(res.data.object);
+        setCustomer(res.data);
         console.log(res.data);
       } else {
         logOut();
@@ -51,8 +51,6 @@ function UserPage() {
           {isUzbek ? "Meing profilim" : "Мой профиль"}
         </Typography>
         <Box sx={{ backgroundColor: "beige", paddingY: 3 }} align={"center"}>
-          
-
           <Grid
             container
             display={"flex"}
@@ -63,9 +61,15 @@ function UserPage() {
               <StatusStars />
             </Grid>
           </Grid>
-          <Box sx={{width: {xs: '80px'}, height: {xs: '80px'}, borderRadius: '50%', }}>
-                <img src={customerIcon} alt="" />
-              </Box>
+          <Box
+            sx={{
+              width: { xs: "80px" },
+              height: { xs: "80px" },
+              borderRadius: "50%",
+            }}
+          >
+            <img src={customerIcon} alt="" />
+          </Box>
           <Box marginTop={2}>
             <Typography>{customer?.fullName}</Typography>
           </Box>

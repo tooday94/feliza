@@ -21,12 +21,12 @@ function StatusStars() {
         const fetchData = async () => {
           const res = await getCustomerByID(user.customerId);
           if (res?.success) {
-            if(res.data?.object?.status?.statusName == 'START') {
+            if(res.data?.status?.statusName == 'START') {
               setList(startStars)
             } 
-            else  if(res.data?.object?.status?.statusName == 'GOLD') {
+            else  if(res.data?.status?.statusName == 'GOLD') {
               setList(goldStars) 
-            }else  if(res.data?.object?.status?.statusName == 'SILVER') {
+            }else  if(res.data?.status?.statusName == 'SILVER') {
               setList(silverStars)
             } else {
               setList(bronzaStars)
