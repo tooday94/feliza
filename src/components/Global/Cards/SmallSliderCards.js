@@ -8,9 +8,10 @@ import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Box, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
-import MyContext from "./Context/MyContext";
+
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { formatNumberWithSpaces, truncateText } from "../Functions";
+import MyContext from "../../Context/MyContext";
 
 export default function SmallSliderCards({ item }) {
   const {isUzbek} = useContext(MyContext)
