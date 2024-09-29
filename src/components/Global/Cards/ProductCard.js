@@ -88,7 +88,7 @@ export default function ProductCard({ item, bigSize }) {
             </Typography>
           )}
           <Typography
-            fontSize={12}
+            fontSize={isSale? 10 : 14}
             sx={{
               textDecoration: isSale ? "line-through" : "none",
               color: isSale ? "grey" : "black",

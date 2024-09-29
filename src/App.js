@@ -153,7 +153,8 @@ function App() {
     const fetchData = async () => {
       const res = await getCartItemsByCustomerId(user.customerId);
       if (res.success) {
-        setCardItems(res.data);
+        const sortedData = res.data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        setCardItems(sortedData);
       } else {
         setCardItems([])
       }
