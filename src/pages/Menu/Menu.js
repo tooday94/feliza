@@ -122,7 +122,7 @@ function Menu({ setIsDrawerOpen }) {
               <Box sx={{ width: "25px", height: "25px" }}>
                 <img src={phoneIcon} alt="" />
               </Box>
-              <a href="tel: +4917663149800">+998993020106 </a>
+              <a href="tel: +998993020106">+998993020106</a>
             </Box>
             <Box
               marginLeft="30px"

@@ -170,6 +170,7 @@ function LoginPage() {
       birthDate: birthDate,
       phoneNumber: tel,
       verifyCode: verifyCode,
+      grnder: gender
     };
 
     const res = await createNewUser(user);
