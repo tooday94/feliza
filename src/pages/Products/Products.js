@@ -39,11 +39,11 @@ function Products() {
     const fetchData = async () => {
       const res = await getProductListByCategoryID(id, page);
       if (res?.success) {
-        console.log(res.data);
+        
         setProducts(res?.data.content);
         setPageCount(res?.data?.totalPages)
         refreshFilter();
-        console.log(res?.data?.totalPages);
+        
         window.scrollTo({  
           top: 0,
           behavior: "smooth" // Optional: adds smooth scrolling effect
@@ -102,7 +102,7 @@ function Products() {
   
 
   const sortFilteredProducts = async () => {
-    console.log('filter');
+    
     const filterRequset = {
       colorIds: colors,
       minPrice: minMaxPrice[0] ? minMaxPrice[0] : 1000,
@@ -115,8 +115,7 @@ function Products() {
     };
     const res = await getFilteredProducts(filterRequset, page);
     if (res?.success) {
-      console.log(sortType);
-      console.log(res.data);
+      
       setProducts(res?.data?.content);
     }
   };

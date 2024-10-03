@@ -18,7 +18,7 @@ const ContactForm = ({
       const res = await getCustomerByID(user.customerId);
       if (res?.success) {
         hasCustomer(res?.data?.fullName, res?.data?.phoneNumber);
-        console.log(res.data);
+        
       }
     };
 

@@ -28,7 +28,7 @@ function AddNewAddress({setHasNewAddress}) {
     const res = await addAddress(adress);
 
     if (res.success) {
-      console.log('manzil qöshildi');
+      
       setHouseNumber('')
       setRegion('');
       setDistrict('');

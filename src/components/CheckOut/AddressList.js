@@ -19,7 +19,7 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
     setValue(id);
   };
 
-  console.log(adresseList);
+ 
 
   return (
     <Box sx={{ marginTop: 2, width: "100%" }}>
@@ -96,7 +96,7 @@ function AddressList({ adresseList, setHasAdress, setAddressId }) {
           sx={{ marginY: 1 }}
           onClick={() => setAddressId(value)}
         >
-          {isUzbek ? "Shu manzilga yuborish" : "Отправить на этот адрес"}
+          {isUzbek ? "Manzilni tasdiqlash" : "Подтвердите адрес"}
         </Button>
         <Button
           variant="outlined"

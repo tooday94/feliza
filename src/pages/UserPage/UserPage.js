@@ -26,7 +26,7 @@ function UserPage() {
       const res = await getCustomerByID(user.customerId);
       if (res?.success) {
         setCustomer(res.data);
-        console.log(res.data);
+        
       } else {
         logOut();
       }

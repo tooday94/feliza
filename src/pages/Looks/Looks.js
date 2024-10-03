@@ -14,7 +14,7 @@ function Looks() {
             const res = await getAllCollections();
 
             if(res.success) {
-                console.log(res.data);
+                
                 setList(res.data);
             }
         }

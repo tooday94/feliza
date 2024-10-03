@@ -40,7 +40,7 @@ function PostFilialDropDown({ district, setPostFilial }) {
     const fetchData = async () => {
       const res = await getAllPostFilialBySubRegion(district.id);
       if (res?.success) {
-        console.log(res.data);
+        
         setOptions(res.data);
       } else {
         setOptions([]);

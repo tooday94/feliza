@@ -8,7 +8,7 @@ import MediumIcon from "../Global/Icons/MediumIcon";
 
 function CouponContainer({ list, coupon, setCoupon }) {
   const { isUzbek } = useContext(MyContext);
-  console.log(list);
+  
   
   return (
     <Box marginTop={2}>

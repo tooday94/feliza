@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 
 function BestSellerBox() {
     const [list, setList] = useState([]);
-    console.log('Bestseller');
+    
     useEffect(() => {
         const fetchData = async() => {
           const res = await getProductListByCategoryID(9);

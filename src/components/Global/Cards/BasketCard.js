@@ -24,19 +24,19 @@ function BasketCard({ item }) {
     }
   };
 
-  console.log(item);
+  
 
   const increaseQuantityOfProduct = () => {
     setIsLoading(true)
     const fetchData = async () => {
       const newQuantity = item.quantity + 1;
-      console.log(newQuantity);
+      
       const newCartItem = {
         customerId: user.customerId,
         productSizeVariantId: item.productSizeVariant.id,
         quantity: newQuantity,
       };
-      console.log(newCartItem);
+      
       const res = await updateCartItem(item.cartItemId, newCartItem);
       if (res?.success) {
         setRefreshCard((prev) => prev + 1);

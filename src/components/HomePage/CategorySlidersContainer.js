@@ -34,7 +34,7 @@ function CategorySlidersContainer({ categoryId }) {
     const fetchData = async () => {
       const res = await getCategoryById(categoryId);
       if (res.success) {
-        console.log(res.data);
+        
         setCategory(res.data);
       }
     };

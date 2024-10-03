@@ -17,7 +17,7 @@ function MyOrders() {
     const fetchData = async () => {
       const res = await getOrdersByCustomerId(user?.customerId);
       if (res?.success) {
-        console.log(res.data);
+        
         setOrderList(res.data);
       }
     };

@@ -9,13 +9,13 @@ function Coupons() {
   const { user, isUzbek } = useContext(MyContext);
   const [coupons, setCoupons] = useState([]);
 
-  const list = [1, 4, 6, 3, 2];
+  
 
   useEffect(() => {
     const fetchData = async() => {
         const res = await getCouponsCustomerByID(user.customerId)
         if(res?.success) {
-            console.log(res.data);
+            
             setCoupons(res.data)
         }
     }

@@ -45,7 +45,7 @@ function FilterDetailes({
     };
 
     const fetchData = async () => {
-      console.log(filterRequset);
+      
       const res = await getFilteredProducts(filterRequset, 2);
       if (res?.success) {
         setList(res.data);

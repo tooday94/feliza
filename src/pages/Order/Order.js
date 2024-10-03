@@ -18,7 +18,7 @@ function Order() {
     const fetchData = async () => {
       const res = await getOrdersById(id);
       if (res?.success) {
-        console.log(res.data);
+        
         setOrder(res.data);
       }
     };

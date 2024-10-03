@@ -6,9 +6,9 @@ const baseURL = 'https://felizabackend.uz/api/order/'
 const addOrder = async(order) => {
 
     try {
-        console.log(order);
+        
         const token = localStorage.getItem('token');
-        console.log(token);
+        
         const res = await axios.post(baseURL + 'addOrder', order, {
             headers: {
               'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ const addOrder = async(order) => {
 const getOrdersByCustomerId = async(id) => {
     try {
         const token = localStorage.getItem('token');
-        console.log(token);
+        
         const res = await axios.get(baseURL + 'getAllByCustomerId/' + id, {
             headers: {
               'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const getOrdersByCustomerId = async(id) => {
 const getOrdersById = async(id) => {
     try {
         const token = localStorage.getItem('token');
-        console.log(token);
+        
         const res = await axios.get(baseURL + 'getOrderById/' + id, {
             headers: {
               'Content-Type': 'application/json',

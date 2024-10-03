@@ -9,7 +9,7 @@ import SmallSlider from "../../Sliders/SmallSlider";
 
 function LastSeenSLider() {
   const { lastSeenList, isUzbek } = useContext(MyContext);
-  console.log(lastSeenList);
+  
 
   return (
     <Box marginTop={3}>

@@ -17,7 +17,7 @@ function MyAddresses() {
 
       if (res?.success) {
         setList(res.data);
-        console.log(res.data);
+        
       }
     };
     fetchData();

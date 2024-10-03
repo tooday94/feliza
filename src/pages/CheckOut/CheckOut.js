@@ -32,14 +32,14 @@ function CheckOut() {
   const [priceWithoutCoupon, setPriceWithoutCoupon] = useState("");
   const [price, setPrice] = useState(0);
 
-  console.log(cardItems);
+
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(user);
+      
       const res = await getAdressByCustomer(user.customerId);
       if (res?.success) {
-        console.log(res.data);
+        
         setAdresseList(res.data);
       }
     };
@@ -71,7 +71,7 @@ function CheckOut() {
     const fetchData = async () => {
       const res = await getCouponsCustomerByID(user.customerId);
       if (res?.success) {
-        console.log(res.data);
+        
         setCouponList(res.data);
       }
     };
@@ -133,11 +133,21 @@ function CheckOut() {
     }
 
     if (addressId === 0) {
-      errorList.push(
-        isUzbek
-          ? "Iltimos manzilingizni kiriting"
-          : "Пожалуйста, введите ваш адрес"
-      );
+
+      if(adresseList !== 0){
+        errorList.push(
+          isUzbek
+            ? "Iltimos manzilni tasdiqlang"
+            : "Пожалуйста, подтвердите адрес"
+        );
+      } else {
+        errorList.push(
+          isUzbek
+            ? "Iltimos manzilingizni kiriting"
+            : "Пожалуйста, введите ваш адрес"
+        );
+      }
+      
     }
 
     if (phoneNumber.trim() === "") {
