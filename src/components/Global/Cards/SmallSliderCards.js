@@ -17,7 +17,8 @@ export default function SmallSliderCards({ item }) {
   const isSale = item.sale > 0;
 
   return (
-    <Card sx={{ maxWidth: 445, border: 0, minHeight: 320 }}>
+    <Box sx={{paddingY: 1}}>
+      <Card sx={{ maxWidth: 445, border: 0, minHeight: 340 }}>
       <Link to={`/product/${item.id}`}>
         <Box sx={{ height: { xs: "220px", md: "350px" }, overflow: "hidden" }}>
           <img src={item.productImages[0]?.url} alt="" />
@@ -51,5 +52,6 @@ export default function SmallSliderCards({ item }) {
         </Box>
       </CardContent>
     </Card>
+    </Box>
   );
 }
