@@ -46,6 +46,8 @@ function Product() {
           
           if(res.data.sale > 0) {
             setIsSale(true)
+          }else {
+            setIsSale(false)
           }
           addToLastSeenList(res.data)
           window.scrollTo({  
