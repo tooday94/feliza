@@ -14,7 +14,8 @@ function StatusPage() {
     const fetchData = async () => {
       const res = await getCustomerByID(user.customerId);
       if (res?.success) {
-        setCustomer(res.data.object);
+        setCustomer(res?.data);
+         
       }
     };
 
