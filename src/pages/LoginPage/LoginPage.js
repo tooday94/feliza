@@ -162,23 +162,23 @@ function LoginPage() {
     createUser();
   };
 
-  const formatDateToDDMMYYYY = (inputDate) => {
-    // Parse the input date into a Date object
-    const date = new Date(inputDate);
+  // const formatDateToDDMMYYYY = (inputDate) => {
+  //   // Parse the input date into a Date object
+  //   const date = new Date(inputDate);
   
-    // Check if the date is valid
-    if (isNaN(date)) {
-      return "Invalid Date"; // Handle invalid date input
-    }
+  //   // Check if the date is valid
+  //   if (isNaN(date)) {
+  //     return "Invalid Date"; // Handle invalid date input
+  //   }
   
-    // Extract day, month, and year
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based in JavaScript
-    const year = date.getFullYear();
+  //   // Extract day, month, and year
+  //   const day = String(date.getDate()).padStart(2, '0');
+  //   const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based in JavaScript
+  //   const year = date.getFullYear();
   
-    // Return the formatted date as dd-mm-yyyy
-    return `${day}-${month}-${year}`;
-  };
+  //   // Return the formatted date as dd-mm-yyyy
+  //   return `${day}-${month}-${year}`;
+  // };
   
   
 
@@ -186,7 +186,7 @@ function LoginPage() {
     const user = {
       fullName: fullName,
       password: registerPassword,
-      birthDate: formatDateToDDMMYYYY(birthDate),
+      birthDate: birthDate,
       phoneNumber: tel,
       verifyCode: verifyCode,
       gender: gender
