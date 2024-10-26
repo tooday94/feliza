@@ -48,7 +48,7 @@ function UserPage() {
     <Box sx={{ width: "100%", marginTop: "9vh" }}>
       <Box sx={{ width: "100%", marginTop: 10 }}>
         <Typography variant="h5" sx={{ marginBottom: 2, textAlign: "center" }}>
-          {isUzbek ? "Meing profilim" : "Мой профиль"}
+          {isUzbek ? "Mening profilim" : "Мой профиль"}
         </Typography>
         <Box sx={{ backgroundColor: "beige", paddingY: 3 }} align={"center"}>
           <Grid

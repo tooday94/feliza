@@ -41,6 +41,8 @@ function Product() {
       const fetchData = async()=> {
         const res = await getProductByID(id);
         if(res.success) {
+          console.log(res.data);
+          
           setItem(res.data)
           
           

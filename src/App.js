@@ -43,7 +43,7 @@ function App() {
     if (storedUserData) {
       return JSON.parse(storedUserData);
     } else {
-      return true;
+      return false;
     }
   });
 

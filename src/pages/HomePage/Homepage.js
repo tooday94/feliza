@@ -41,24 +41,16 @@ function Homepage() {
                 <CategorySlidersContainer categoryId={22}/>
               </Box>
               
-              <MainCategoryContainer list={nessaCategoryList} />
+              {/* <MainCategoryContainer list={nessaCategoryList} />
               <CategorySlidersContainer categoryId={62}/>
-              <CategorySlidersContainer categoryId={60}/>
+              <CategorySlidersContainer categoryId={60}/> */}
               
               
               <MainCategoryContainer list={categorySliderList3} />
-              <CategorySlidersContainer categoryId={65}/>
+              <CategorySlidersContainer categoryId={11}/>
               <CategorySlidersContainer categoryId={13}/>
               <Grid container spacing={1}>
-              {/* {
-                list.map((item, idx) => {
-                    return(
-                        <Grid item xs = {12} md = {6} lg = {4} key={idx + item.title}>
-                          <CategoryCard  item={item}/>
-                        </Grid>
-                    )
-                })
-              } */}
+              
               </Grid>
             </Grid>
         </Grid>

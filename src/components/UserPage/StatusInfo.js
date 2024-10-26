@@ -23,17 +23,17 @@ function StatusInfo() {
         bronze: {
           title: "• Bronza",
           description:
-            "100 000 so'm kupon beriladi. Sizning ballaringiz: 1 500 dan 2 999 gacha",
+            "50 000 so'm kupon beriladi. Sizning ballaringiz: 1 500 dan 2 999 gacha",
         },
         silver: {
           title: "• Silver",
           description:
-            "200 000 so'm kupon beriladi. Sizning ballaringiz: 3 000 dan 5 999 gacha",
+            "100 000 so'm kupon beriladi. Sizning ballaringiz: 3 000 dan 5 999 gacha",
         },
         gold: {
           title: "• Gold",
           description:
-            "300 000 so'm kupon Sizning ballaringiz: 6 000 va keyingi har 1000 ball uchun alohida sovg'alar.",
+            "150 000 so'm kupon Sizning ballaringiz: 6 000 va keyingi har 1000 ball uchun alohida sovg'alar.",
         },
       };
       
@@ -45,17 +45,17 @@ function StatusInfo() {
         bronze: {
           title: "• Бронза",
           description:
-            "Выдается купон на 100 000 сум. Ваши баллы: от 1 500 до 2 999",
+            "Выдается купон на 50 000 сум. Ваши баллы: от 1 500 до 2 999",
         },
         silver: {
           title: "• Сильвер",
           description:
-            "Выдается купон на 200 000 сум. Ваши баллы: от 3 000 до 5 999",
+            "Выдается купон на 100 000 сум. Ваши баллы: от 3 000 до 5 999",
         },
         gold: {
           title: "• Голд",
           description:
-            "Выдается купон на 300 000 сум. Ваши баллы: 6 000 и дополнительные подарки за каждые следующие 1 000 баллов.",
+            "Выдается купон на 150 000 сум. Ваши баллы: 6 000 и дополнительные подарки за каждые следующие 1 000 баллов.",
         },
       };
 
