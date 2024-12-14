@@ -63,7 +63,7 @@ function LoginPage() {
 
   const checkUser = async (tempPhoneNumber) => {
     const phone = {
-      phoneNumber: tempPhoneNumber,
+      phoneNumber: "+998" + tempPhoneNumber,
     };
     const res = await isRegistretedUser(phone);
     if (res?.success) {
@@ -74,7 +74,7 @@ function LoginPage() {
   const loginUser = async () => {
     const tempPass = password == "" ? registerPassword : password;
     const userDetailes = {
-      phoneNumber: tel,
+      phoneNumber: "+998" + tel,
       password: tempPass,
     };
 
@@ -187,7 +187,7 @@ function LoginPage() {
       fullName: fullName,
       password: registerPassword,
       birthDate: birthDate,
-      phoneNumber: tel,
+      phoneNumber: "+998" + tel,
       verifyCode: verifyCode,
       gender: gender
     };
@@ -233,7 +233,7 @@ function LoginPage() {
 
   const getNewVerifyCode = async () => {
     const phone = {
-      phoneNumber: tel,
+      phoneNumber: "+998" + tel,
     };
     const res = await getVerifyCodeToNewPassword(phone);
     if (!res.success) {
@@ -243,7 +243,7 @@ function LoginPage() {
 
   const restorePasswordByCustomer = async () => {
     const bodyObj = {
-      phoneNumber: tel,
+      phoneNumber: "+998" + tel,
       newPassword: newPassword,
       verifyCode: changePasswordCode,
     };
@@ -258,7 +258,7 @@ function LoginPage() {
 
   const checkVerifyCode = async () => {
     const body = {
-      phoneNumber: tel,
+      phoneNumber: "+998" + tel,
       code: verifyCode,
     };
     const res = await checkSMSCode(body);
@@ -269,6 +269,8 @@ function LoginPage() {
       alert("Tasdiqlash kodi xato kiritildi");
     }
   };
+
+  
 
   const translations = {
     uzbek: {
@@ -324,7 +326,10 @@ function LoginPage() {
         </Box>
 
         <Box sx={{ display: isRegistreted == 0 ? "block" : "none" }}>
-          <Box width="300px" marginY={3}>
+          <Box width="300px" marginY={3} display={'flex'} gap={1} alignItems={'center'}>
+          <Typography>
+            +998
+          </Typography>
             <TextField
               variant="outlined"
               label={t.phoneNumberLabel}
@@ -400,7 +405,7 @@ function LoginPage() {
             <TextField
               variant="outlined"
               disabled
-              value={tel}
+              value={"+998" + tel}
               size="small"
               fullWidth
             />

@@ -47,14 +47,20 @@ function MainFooter() {
       <Grid container display={"flex"} justifyContent={"center"} marginTop={2}>
         <Grid item xs={8} md={6} lg={4}>
           <Box marginBottom={2}>
+            <Box display={"flex"} gap={1} alignItems={"center"}>
+              <Typography color={'grey'}>
+                +998
+              </Typography>
             <TextField
-              variant="standard"
+              variant="outlined"
               fullWidth
               label= {isUzbek? "Telefon raqamingiz..." : "Ваш номер телефона..."}
               onChange={(e) => setValue(e.target.value)}
               value={value}
               id="footer-phone-input"
+              size="small"
             />
+            </Box>
 
             <Button
               variant="contained"

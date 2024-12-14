@@ -22,8 +22,8 @@ export const  formatNumberWithSpaces = (number) => {
 }
 
 export const isValidPhoneNumber = (phoneNumber) => {
-  if (phoneNumber.startsWith('+998') && phoneNumber.length === 13) {
-    for (let i = 4; i < 13; i++) {
+  if (phoneNumber.length === 9) {
+    for (let i = 0; i < 9; i++) {
       if (isNaN(phoneNumber[i])) {
         return false;
       }
