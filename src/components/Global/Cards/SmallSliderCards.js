@@ -20,7 +20,7 @@ export default function SmallSliderCards({ item }) {
     <Box sx={{paddingY: 1}}>
       <Card sx={{ maxWidth: 445, border: 0, minHeight: 340 }}>
       <Link to={`/product/${item.id}`}>
-        <Box sx={{ height: { xs: "220px", md: "350px" }, overflow: "hidden" }}>
+        <Box sx={{ height: { xs: "220px", md: "350px", lg: '520px' }, overflow: "hidden" }}>
           <img src={item.productImages[0]?.url} alt="" />
         </Box>
       </Link>

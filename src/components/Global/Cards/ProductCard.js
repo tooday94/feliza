@@ -52,7 +52,7 @@ export default function ProductCard({ item, bigSize }) {
       <Link to={`/product/${item?.id}`}>
         <Box
           sx={{
-            height: { xs: bigSize ? "500px" : "300px", md: "500px" },
+            height: { xs: bigSize ? "500px" : "300px", md: "500px", lg: '800px' },
             overflow: "hidden",
           }}
         >
