@@ -16,6 +16,8 @@ const SliderMain = () => {
     const fetchData = async () => {
       const res = await getAllKaruselSlides();
       if (res.success) {
+        console.log(res.data);
+        
         setList(res.data);
         setIsLoading(false);
       }
@@ -63,7 +65,7 @@ const SliderMain = () => {
               key={idx + item.karuselType}
               onClick={() => handleNavigate(item.karuselType, item.parameterId)}
             >
-              <img src={item?.productImages[0]?.url} alt="" />
+              <img src={item?.productImages?.url} alt="" />
             </Box>
           ))
         ) : (
